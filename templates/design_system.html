@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Unified Design System | V2</title>
+
+    <!-- Original Aura Scripts -->
+    <script src="./canvas-visual.aura.build/assets/resource_3fa48481346f.js"></script>
+    <script src="./canvas-visual.aura.build/assets/iconify_654a1ef798a3.js"></script>
+    <script src="./animations-gemini/assets/iconify-icon_e19829e7f0e8.js"></script>
+
+    <!-- Google Fonts Links from Originals -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="./canvas-visual.aura.build/assets/css2_5dc1420882f5.css" rel="stylesheet"/>
+    <link href="./canvas-visual.aura.build/assets/css2_86e10c4bcbd4.css" rel="stylesheet"/>
+    <!-- Orbitron from SITE DIEGO JAQUES -->
+    <link href="./SITE DIEGO JAQUES/assets/css2_1ae2d9cdc60c.css" rel="stylesheet"/>
+
+    <style>
+        /* Base Palette & Roots */
+        :root {
+            --bg-deep: #050505;
+            --accent: #00FFFF; /* Cyan Accent */
+            --cyan-accent: #00D8FF; /* Diego Jaques Cyan */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: #d4d4d4;
+            scroll-behavior: smooth;
+        }
+        .font-orbitron { font-family: 'Orbitron', 'Inter', sans-serif; }
+
+        /* Background Effects */
+        .grid-bg {
+            background-image:
+            linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+        }
+        .crt-scanlines {
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 4px;
+        }
+
+        /* Animations */
+        @keyframes fadeSlideIn { 
+            0% { opacity: 0; transform: translateY(30px); filter: blur(8px); } 
+            100% { opacity: 1; transform: translateY(0); filter: blur(0px); } 
+        }
+        .animate-on-scroll { animation-play-state: paused !important; }
+        .animate-on-scroll.animate { animation-play-state: running !important; }
+
+        @keyframes shimmer {
+            from { transform: translateX(-100%) skewX(-15deg); }
+            to { transform: translateX(200%) skewX(-15deg); }
+        }
+
+        @keyframes beam-drop { 
+            0% { transform: translateY(-100%); opacity: 0; } 
+            10% { opacity: 1; } 90% { opacity: 1; } 
+            100% { transform: translateY(100%); opacity: 0; } 
+        }
+        @keyframes beam-slide { 
+            0% { transform: translateX(-100%); opacity: 0; } 
+            10% { opacity: 1; } 90% { opacity: 1; } 
+            100% { transform: translateX(100%); opacity: 0; } 
+        }
+
+        /* Border Beams */
+        .beam-border-v { position: absolute; top: 0; bottom: 0; left: 0; width: 1px; background: rgba(255,255,255,0.05); overflow: hidden; z-index: 10; }
+        .beam-border-v::after { content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(to bottom, transparent, var(--accent), transparent); transform: translateY(-100%); animation: beam-drop 5s cubic-bezier(0.4, 0, 0.2, 1) infinite; opacity: 0.7; }
+        .beam-border-h { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: rgba(255,255,255,0.05); overflow: hidden; z-index: 10; }
+        .beam-border-h::after { content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(to right, transparent, var(--accent), transparent); transform: translateX(-100%); animation: beam-slide 7s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: 2.5s; opacity: 0.7; }
+
+        /* Micro-Interactions */
+        .floating-card { transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0s; will-change: transform; }
+        .floating-card:hover { transform: scale(1.1) translateY(-10px) !important; z-index: 50; box-shadow: 0 25px 50px -12px rgba(0, 255, 255, 0.2); border-color: rgba(0, 255, 255, 0.5); }
+        .glow-on-hover { transition: all 0.3s ease; }
+        .glow-on-hover:hover { box-shadow: 0 0 40px rgba(0, 255, 255, 0.3); transform: translateY(-2px); border-color: rgba(0, 255, 255, 0.5); }
+
+        .flashlight-card { position: relative; background: rgba(255, 255, 255, 0.01); transition: transform 0.3s ease; overflow: hidden; }
+        .flashlight-card::before {
+            content: ""; position: absolute; inset: 0px; 
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(0, 255, 255, 0.1), transparent 40%); 
+            opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 2; 
+        }
+        .flashlight-card:hover::before { opacity: 1; }
+
+        .btn-wrapper:hover .btn { background-color: var(--accent); color: #000; border-color: var(--accent); }
+        .btn { transition: all 0.3s ease; }
+    </style>
+
+    <script>
+    (function () {
+      const once = true;
+      if (!window.__inViewIO) {
+        window.__inViewIO = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate");
+              if (once) window.__inViewIO.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+      }
+      window.initInViewAnimations = function (selector = ".animate-on-scroll") {
+        document.querySelectorAll(selector).forEach((el) => { window.__inViewIO.observe(el); });
+      };
+      document.addEventListener("DOMContentLoaded", () => {
+        initInViewAnimations();
+        document.querySelectorAll('.flashlight-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            });
+        });
+      });
+    })();
+    </script>
+</head>
+<body class="selection:bg-[#00FFFF] selection:text-black min-h-screen flex flex-col overflow-x-hidden relative">
+
+<!-- Background Layers -->
+<div class="fixed inset-0 crt-scanlines pointer-events-none z-[1] opacity-30"></div>
+<div class="fixed top-0 w-full h-screen z-0 saturate-50 brightness-50 mix-blend-screen" data-alpha-mask="80" style="mask-image: linear-gradient(to bottom, transparent, black 10%, black 70%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 70%, transparent)">
+  <div class="absolute w-full h-full left-0 top-0 z-0" data-us-project="fbC2LfIKPWAtosLcp0kG"></div>
+  <script type="text/javascript">
+    !function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();
+  </script>
+</div>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 w-full z-[100] bg-black/60 backdrop-blur-xl border-b border-white/10 px-6 py-4 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-500 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+    <a href="#" class="text-white hover:text-[#00FFFF] transition-colors flex items-center gap-3">
+        <div class="w-3 h-3 bg-[#00FFFF] animate-pulse"></div>
+        <span class="font-orbitron font-medium tracking-[0.2em]">Oura DS</span>
+    </a>
+    <div class="hidden md:flex gap-8 items-center">
+        <a href="#hero" class="hover:text-[#00FFFF] transition-colors">Hero Patterns</a>
+        <a href="#typography" class="hover:text-[#00FFFF] transition-colors">Typography</a>
+        <a href="#colors" class="hover:text-[#00FFFF] transition-colors">Colors</a>
+        <a href="#components" class="hover:text-[#00FFFF] transition-colors">Components</a>
+        <a href="#motion" class="hover:text-[#00FFFF] transition-colors">Motion</a>
+    </div>
+</nav>
+
+<!-- 1. HERO - 5 IMAGES (Based on Canvas, highly stylized) -->
+<section id="hero" class="pt-24 min-h-[90vh] flex items-center relative border-b border-white/5 overflow-hidden z-10 bg-black/20">
+    <div class="absolute inset-0 grid-bg pointer-events-none z-0"></div>
+    <div class="beam-border-h"></div>
+    
+    <main class="w-full grid grid-cols-1 lg:grid-cols-12 px-6 lg:px-12 my-12 lg:my-20 gap-12 relative z-10 max-w-[100rem] mx-auto">
+        <!-- Text Content -->
+        <div class="lg:col-span-5 flex flex-col justify-center z-20 relative pt-10 lg:pt-0">
+            <h1 class="font-orbitron lg:text-[7rem] leading-[0.9] uppercase animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] text-5xl font-medium text-white tracking-tighter mb-8 drop-shadow-[0_0_40px_rgba(0,255,255,0.2)] animate">
+                Visual<br class=""/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">Synthesis</span>
+            </h1>
+            <p class="text-lg text-neutral-400 max-w-md leading-relaxed mb-12 font-light animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both] border-l-2 border-[#00FFFF]/50 pl-5 py-2 backdrop-blur-sm bg-white/5 animate">
+                The living pattern library. Modular, parametric, and built for the post-digital era. Explore canonical examples, typography, colors, and components powering this visual language.
+            </p>
+            <div class="flex flex-col items-start gap-4 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both] animate">
+                <a class="btn-wrapper group relative inline-flex justify-center items-center p-4 border border-neutral-800 hover:border-[#00FFFF] transition-colors duration-300 bg-black/80 backdrop-blur-md" href="#components">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjQ5LCAxMTUsIDIyLCAwLjIpIi8+PC9zdmc+')] transition-opacity duration-300"></div>
+                    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#00FFFF] opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0"></div>
+                    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#00FFFF] opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0"></div>
+                    <button class="btn font-orbitron flex items-center gap-3 bg-transparent text-white font-medium uppercase tracking-widest text-sm relative z-10">
+                        Explore Specs
+                        <svg aria-hidden="true" class="iconify text-lg iconify--solar group-hover:translate-x-1 transition-transform" data-icon="solar:arrow-right-up-bold-duotone" viewBox="0 0 24 24" fill="currentColor"><path clip-rule="evenodd" d="M17.47 15.53a.75.75 0 0 0 1.28-.53V6a.75.75 0 0 0-.75-.75H9a.75.75 0 0 0-.53 1.28z" fill-rule="evenodd"></path><path d="M5.47 17.47a.75.75 0 1 0 1.06 1.06l6.97-6.97l-1.06-1.06z" opacity=".5"></path></svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Float 5-Images Layout -->
+        <div class="lg:col-span-6 relative h-[500px] lg:h-auto flex items-center justify-center animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.8s_both] perspective-[1000px] animate">
+            <div class="relative z-10 w-64 aspect-[4/5] bg-neutral-900 border border-white/10 shadow-2xl floating-card transform rotate-[-2deg] glow-on-hover">
+                <img alt="Abstract Art" class="w-full h-full object-cover opacity-80 mix-blend-screen hover:mix-blend-normal transition-all duration-500" src="./canvas-visual.aura.build/assets/ba85e313-0a22-4811-b7e0-1e6a99_ecc219644ecc.webp"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+                <div class="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 border border-white/20">
+                    <span class="text-[10px] font-mono uppercase text-white tracking-widest">Main Component</span>
+                </div>
+            </div>
+            <div class="absolute top-[5%] left-[0%] w-40 aspect-square bg-neutral-900 border border-white/10 shadow-xl floating-card z-0 transform -rotate-12 glow-on-hover">
+                <img alt="Nature" class="transition-all duration-500 opacity-60 w-full h-full object-cover grayscale hover:grayscale-0" src="./canvas-visual.aura.build/assets/1d62b373-cc7d-4f73-b0bd-e8a8ec_2a4b770bf63a.webp"/>
+            </div>
+            <div class="absolute bottom-[5%] right-[0%] w-48 aspect-square bg-neutral-900 border border-white/10 shadow-xl floating-card z-20 transform rotate-6 glow-on-hover">
+                <img alt="Graphic" class="w-full h-full object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-500" src="./canvas-visual.aura.build/assets/63a6abea-fa7c-44e7-b134-9d7023_2e6b94d20600.webp"/>
+            </div>
+            <div class="absolute top-[10%] right-[5%] w-32 aspect-[3/4] bg-neutral-900 border border-white/10 shadow-lg floating-card z-0 transform rotate-12 glow-on-hover">
+                <img alt="Portrait" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-500" src="./canvas-visual.aura.build/assets/917d6f93-fb36-439a-8c48-884b67_1e33efa61316.jpg"/>
+            </div>
+            <div class="absolute bottom-[10%] left-[-5%] w-52 aspect-video bg-neutral-900 border border-white/10 shadow-2xl floating-card z-30 transform -rotate-6 hidden lg:block glow-on-hover">
+                <img alt="Urban" class="w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-500" src="./canvas-visual.aura.build/assets/43de405d-d7b1-490b-ae4b-52e1fa_dd5afabb973c.webp"/>
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div class="bg-[#00FFFF]/20 backdrop-blur-md p-3 rounded-full border border-[#00FFFF]/50 shadow-[0_0_20px_rgba(0,255,255,0.4)]">
+                        <iconify-icon icon="solar:play-bold-duotone" class="text-white text-xl"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar / Interactions Stats -->
+        <div class="lg:col-span-1 flex flex-col justify-center items-center relative z-20 pl-4 border-l border-white/10 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_1s_both]">
+           <div class="flex flex-col gap-12 w-full text-center lg:text-left">
+               <div class="group cursor-pointer">
+                   <span class="font-orbitron block text-4xl font-light text-neutral-500 group-hover:text-[#00FFFF] transition-colors duration-300">v4.0</span>
+                   <span class="text-[10px] text-neutral-600 uppercase tracking-widest mt-2 block border-l-2 border-transparent group-hover:border-[#00FFFF] pl-2 transition-all">Version</span>
+               </div>
+               <div class="group cursor-pointer">
+                   <span class="font-orbitron block text-4xl font-light text-neutral-500 group-hover:text-[#00FFFF] transition-colors duration-300">2.1k</span>
+                   <span class="text-[10px] text-neutral-600 uppercase tracking-widest mt-2 block border-l-2 border-transparent group-hover:border-[#00FFFF] pl-2 transition-all">Components</span>
+               </div>
+               <div class="group cursor-pointer">
+                   <div class="w-12 h-12 border border-[#00FFFF]/80 bg-[#00FFFF]/10 rounded-full flex items-center justify-center text-[#00FFFF] glow-on-hover shadow-[0_0_20px_rgba(0,255,255,0.5)] mx-auto lg:mx-0">
+                       <iconify-icon icon="solar:planet-bold-duotone" class="text-2xl animate-[spin_8s_linear_infinite]"></iconify-icon>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </main>
+</section>
+
+<!-- 2. TYPOGRAPHY -->
+<section id="typography" class="py-24 px-6 lg:px-12 w-full max-w-[100rem] mx-auto border-b border-white/5 bg-black/30 z-10 relative">
+    <div class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-8 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+      <div>
+        <p class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-4 flex items-center gap-3">
+          <span class="w-8 h-[1px] bg-[#00FFFF]"></span> 01 // Typography
+        </p>
+        <h2 class="text-3xl lg:text-[4rem] font-medium tracking-tight text-white font-orbitron uppercase leading-[0.9]">Type Scale Strategy</h2>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-12">
+      <!-- H1 -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between border-b border-white/10 pb-8 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+        <div class="max-w-4xl">
+          <p class="text-[10px] text-[#00FFFF] font-mono uppercase tracking-widest mb-4">Display H1</p>
+          <h1 class="font-orbitron text-white uppercase leading-[0.9] tracking-tighter text-[4rem] lg:text-[7.5rem] drop-shadow-[0_0_30px_rgba(0,255,255,0.15)] hover:text-[#00FFFF] transition-colors cursor-default">
+            Visual Engine
+          </h1>
+        </div>
+        <div class="mt-4 lg:mt-0 text-right">
+          <p class="text-sm font-mono text-neutral-500">7.5rem / 0.9 / Orbitron</p>
+        </div>
+      </div>
+
+      <!-- H2 -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between border-b border-white/10 pb-8 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+        <div class="max-w-4xl">
+          <p class="text-[10px] text-[#00FFFF] font-mono uppercase tracking-widest mb-4">Display H2</p>
+          <h2 class="text-4xl lg:text-[4.5rem] leading-[1.1] text-white font-normal tracking-tight">
+            Creative intelligence interface.
+          </h2>
+        </div>
+        <div class="mt-4 lg:mt-0 text-right">
+          <p class="text-sm font-mono text-neutral-500">4.5rem / 1.1 / Inter</p>
+        </div>
+      </div>
+
+      <!-- H3 -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between border-b border-white/10 pb-8 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+        <div class="max-w-4xl">
+          <p class="text-[10px] text-[#00FFFF] font-mono uppercase tracking-widest mb-4">Heading H3</p>
+          <h3 class="text-white font-medium text-3xl hover:text-[#00FFFF] transition-colors tracking-tight">Liquid Layout Components</h3>
+        </div>
+        <div class="mt-4 lg:mt-0 text-right">
+          <p class="text-sm font-mono text-neutral-500">1.875rem / Med / Inter</p>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between border-b border-white/10 pb-8 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+        <div class="max-w-3xl">
+          <p class="text-[10px] text-[#00FFFF] font-mono uppercase tracking-widest mb-4">Body Large / Paragraph</p>
+          <p class="text-lg text-neutral-400 leading-relaxed font-light border-l-2 border-[#00FFFF]/30 pl-4 py-1">
+            A truly open-source canvas for the post-digital era. Construct interfaces with parametric efficiency and brutalist principles. The era of static web pages is dead. Interfaces must now be fluid, responsive, and render complex data visualizations at 60fps across all devices.
+          </p>
+        </div>
+        <div class="mt-4 lg:mt-0 text-right">
+          <p class="text-sm font-mono text-neutral-500">1.125rem / Relaxed / Light</p>
+        </div>
+      </div>
+      
+      <!-- Label -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+        <div class="max-w-3xl">
+          <p class="text-[10px] text-[#00FFFF] font-mono uppercase tracking-widest mb-4">Label / Mono UI</p>
+          <span class="text-xs font-semibold text-neutral-500 uppercase tracking-widest">Client Auth Validated</span>
+        </div>
+        <div class="mt-4 lg:mt-0 text-right">
+          <p class="text-sm font-mono text-neutral-500">0.75rem / Widest</p>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- 3. COLORS & SURFACES -->
+<section id="colors" class="py-24 px-6 lg:px-12 w-full max-w-[100rem] mx-auto border-b border-white/5 bg-[#050505] z-10 relative">
+    <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-8 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+      <div>
+        <p class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-4 flex items-center gap-3">
+          <span class="w-8 h-[1px] bg-[#00FFFF]"></span> 02 // Colors
+        </p>
+        <h2 class="text-3xl lg:text-[4rem] font-medium tracking-tight text-white font-orbitron uppercase leading-[0.9]">Color Space</h2>
+      </div>
+    </div>
+
+    <!-- Semantic Grids -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div class="space-y-4 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate group cursor-pointer">
+            <div class="w-full aspect-square bg-[#00FFFF] border border-white/20 shadow-[0_0_30px_rgba(0,255,255,0.2)] group-hover:scale-[1.03] transition-transform duration-300"></div>
+            <div class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <span class="text-white block font-inter mb-1">Primary Accent</span>
+                HEX #00FFFF<br/>AA Contrast
+            </div>
+        </div>
+        <div class="space-y-4 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] animate group cursor-pointer">
+            <div class="w-full aspect-square bg-[#050505] border border-white/20 shadow-xl group-hover:border-white/40 transition-all duration-300 group-hover:scale-[1.03]"></div>
+            <div class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <span class="text-white block font-inter mb-1">Main Background</span>
+                HEX #050505<br/>Base Level
+            </div>
+        </div>
+        <div class="space-y-4 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate group cursor-pointer">
+            <div class="w-full aspect-square bg-[#0A0A0A] border border-white/20 shadow-xl group-hover:border-[#00FFFF]/30 transition-all duration-300 group-hover:scale-[1.03]"></div>
+            <div class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <span class="text-white block font-inter mb-1">Surface 1</span>
+                HEX #0A0A0A<br/>Card Backings
+            </div>
+        </div>
+        <div class="space-y-4 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both] animate group cursor-pointer">
+            <div class="w-full aspect-square bg-neutral-900 border border-white/20 shadow-xl group-hover:border-[#00FFFF]/30 transition-all duration-300 group-hover:scale-[1.03]"></div>
+            <div class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <span class="text-white block font-inter mb-1">Neutral 900</span>
+                Tw/Neutral-900<br/>Elevated Elements
+            </div>
+        </div>
+        <div class="space-y-4 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both] animate group cursor-pointer">
+            <div class="w-full aspect-square bg-neutral-800 border border-white/20 shadow-xl group-hover:border-[#00FFFF]/30 transition-all duration-300 group-hover:scale-[1.03]"></div>
+            <div class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <span class="text-white block font-inter mb-1">Neutral 800</span>
+                Tw/Neutral-800<br/>Hover states
+            </div>
+        </div>
+        
+        <div class="space-y-4 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.5s_both] animate group cursor-pointer">
+            <div class="w-full aspect-square bg-white/10 border border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-md group-hover:border-white/50 transition-all duration-300 group-hover:scale-[1.03]"></div>
+            <div class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <span class="text-white block font-inter mb-1">Glass Effect</span>
+                White / 10%<br/>Backdrop Blur
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. UI COMPONENTS -->
+<section id="components" class="py-24 px-6 lg:px-12 w-full max-w-[100rem] mx-auto border-b border-white/5 bg-black/40 z-10 relative">
+    <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-8 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+      <div>
+        <p class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-4 flex items-center gap-3">
+          <span class="w-8 h-[1px] bg-[#00FFFF]"></span> 03 // Components
+        </p>
+        <h2 class="text-3xl lg:text-[4rem] font-medium tracking-tight text-white font-orbitron uppercase leading-[0.9]">Atomic Library</h2>
+      </div>
+    </div>
+
+    <!-- Components Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- Left Column: Inputs & Buttons -->
+        <div class="space-y-12">
+            <!-- Shimmer Button (Gemini Style applied) -->
+            <div class="p-10 border border-white/10 bg-[#0A0A0A] flex flex-col gap-10 items-start hover:border-white/20 transition-colors animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest border-b border-white/10 w-full pb-4">Shimmer Beam Button</span>
+                
+                <div class="group relative scale-110 ml-4 mt-4">
+                    <div class="-inset-2 group-hover:opacity-100 transition duration-500 bg-[#00FFFF]/30 opacity-0 rounded-full absolute blur-xl"></div>
+                    <div class="absolute -inset-[1px] rounded-full overflow-hidden opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#00FFFF_360deg)] animate-[spin_2s_linear_infinite]"></div>
+                    </div>
+                    <button class="group relative z-10 flex items-center justify-center overflow-hidden rounded-full p-[1px] leading-none">
+                        <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#00FFFF_360deg)]"></span>
+                        <span class="relative flex h-full w-full items-center rounded-full bg-[#050505] pt-4 pr-10 pb-4 pl-10 ring-1 ring-white/10">
+                            <span class="absolute inset-0 overflow-hidden rounded-full">
+                                <span class="absolute top-0 left-0 h-full w-full -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:animate-[shimmer_1.5s_infinite] group-hover:opacity-100"></span>
+                            </span>
+                            <span class="relative z-10 flex items-center">
+                                <span class="text-sm font-bold tracking-widest uppercase text-white">Execute Protocol</span>
+                            </span>
+                            <span class="relative z-10 ml-4 flex items-center text-[#00FFFF] transition duration-200 group-hover:translate-x-1">
+                                <iconify-icon class="text-2xl" icon="solar:arrow-right-bold-duotone"></iconify-icon>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Input Group / Mailing List -->
+            <div class="p-10 border border-white/10 bg-[#0A0A0A] flex flex-col gap-10 items-start hover:border-white/20 transition-colors animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest border-b border-white/10 w-full pb-4">Neon Input Group</span>
+                
+                <div class="bg-[#050505] border border-white/20 rounded-full py-3 pl-6 pr-2 flex items-center gap-4 shadow-[0_0_15px_rgba(0,0,0,0.5)] w-full max-w-md group hover:border-[#00FFFF] transition-colors hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]">
+                    <input class="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-neutral-600 font-mono tracking-wide" placeholder="Enter security key..." type="text"/>
+                    <button class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-[#00FFFF] transition-colors shrink-0">
+                        <iconify-icon icon="solar:shield-keyhole-bold-duotone" class="text-xl"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Warning Alert / Badge -->
+            <div class="p-10 border border-white/10 bg-[#0A0A0A] flex flex-col gap-10 items-start hover:border-white/20 transition-colors animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest border-b border-white/10 w-full pb-4">Badges & Callouts</span>
+                
+                <div class="flex flex-wrap gap-4">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#00FFFF]/30 bg-[#00FFFF]/10 text-[#00FFFF] rounded-sm text-xs font-orbitron uppercase tracking-widest glow-on-hover">
+                        <iconify-icon icon="solar:danger-triangle-bold-duotone"></iconify-icon>
+                        System Alert
+                    </div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 border border-white/10 bg-white/5 text-white rounded-full text-xs font-mono uppercase tracking-widest backdrop-blur-md">
+                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-green-500"></iconify-icon>
+                        Active Source
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Interactive Cards -->
+        <div class="space-y-12">
+            <!-- Flashlight Card (Gemini) -->
+            <div class="p-10 border border-white/10 bg-[#0A0A0A] flex flex-col gap-8 hover:border-white/20 transition-colors animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both]">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest border-b border-white/10 w-full pb-4">Flashlight Hover Card</span>
+                
+                <div class="flashlight-card relative aspect-video border border-white/10 bg-neutral-900/40 p-8 flex flex-col justify-end group shadow-2xl cursor-pointer">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNSkiLz48L3N2Zz4=')] opacity-20 pointer-events-none"></div>
+                    <iconify-icon class="text-4xl text-neutral-500 mb-4 group-hover:text-[#00FFFF] transition-colors duration-500 z-10" icon="solar:box-minimalistic-bold-duotone"></iconify-icon>
+                    <h3 class="text-white font-medium text-xl z-10 font-orbitron tracking-wide">Spatial Environment</h3>
+                    <p class="text-neutral-500 text-sm mt-2 z-10 font-light">
+                        Move your cursor over this card to interact with the environment lighting.
+                    </p>
+                    <div class="absolute top-4 right-4 bg-black/60 border border-white/10 p-2 rounded-full z-10">
+                        <iconify-icon icon="solar:cursor-square-bold-duotone" class="text-[#00FFFF]"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Callout -->
+            <div class="p-10 border border-white/10 bg-[#0A0A0A] flex flex-col gap-8 items-start hover:border-white/20 transition-colors animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.5s_both]">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest border-b border-white/10 w-full pb-4">Mini Abstract Card</span>
+                
+                <div class="w-full max-w-sm bg-[#111] border border-white/10 p-6 shadow-xl transform hover:-translate-y-2 hover:border-[#00FFFF]/50 transition-all duration-300 group cursor-pointer inline-flex glow-on-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-[#00FFFF] flex items-center justify-center text-black font-bold text-xl shrink-0 rounded-sm">
+                            <iconify-icon icon="solar:code-square-bold-duotone"></iconify-icon>
+                        </div>
+                        <div class="">
+                            <p class="text-white font-medium text-base leading-tight group-hover:text-[#00FFFF] transition-colors tracking-wide">Developer API</p>
+                            <p class="text-neutral-500 text-xs mt-2 font-mono leading-relaxed">Headless integration docs and endpoint references.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- 5. ICONS -->
+<section id="icons" class="py-24 px-6 lg:px-12 w-full max-w-[100rem] mx-auto border-b border-white/5 bg-[#050505] z-10 relative">
+    <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-8 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+      <div>
+        <p class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-4 flex items-center gap-3">
+          <span class="w-8 h-[1px] bg-[#00FFFF]"></span> 04 // Iconography
+        </p>
+        <h2 class="text-3xl lg:text-[4rem] font-medium tracking-tight text-white font-orbitron uppercase leading-[0.9]">Solar UI / Bold Duotone</h2>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-2 lg:grid-cols-8 gap-4 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate">
+        <!-- Generative list of icons -->
+        <div class="aspect-square border border-white/10 bg-[#0A0A0A] flex flex-col items-center justify-center text-white/50 hover:text-[#00FFFF] transition-colors hover:border-[#00FFFF]/40 cursor-pointer glow-on-hover gap-3">
+            <iconify-icon icon="solar:zip-file-bold-duotone" class="text-4xl"></iconify-icon>
+            <span class="text-[10px] font-mono opacity-50">zip-file</span>
+        </div>
+        <div class="aspect-square border border-white/10 bg-[#0A0A0A] flex flex-col items-center justify-center text-white/50 hover:text-[#00FFFF] transition-colors hover:border-[#00FFFF]/40 cursor-pointer glow-on-hover gap-3">
+            <iconify-icon icon="solar:file-download-bold-duotone" class="text-4xl"></iconify-icon>
+            <span class="text-[10px] font-mono opacity-50">download</span>
+        </div>
+        <div class="aspect-square border border-white/10 bg-[#0A0A0A] flex flex-col items-center justify-center text-white/50 hover:text-[#00FFFF] transition-colors hover:border-[#00FFFF]/40 cursor-pointer glow-on-hover gap-3">
+            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="text-4xl"></iconify-icon>
+            <span class="text-[10px] font-mono opacity-50">layers</span>
+        </div>
+        <div class="aspect-square border border-white/10 bg-[#0A0A0A] flex flex-col items-center justify-center text-white/50 hover:text-[#00FFFF] transition-colors hover:border-[#00FFFF]/40 cursor-pointer glow-on-hover gap-3">
+            <iconify-icon icon="solar:graph-up-bold-duotone" class="text-4xl"></iconify-icon>
+            <span class="text-[10px] font-mono opacity-50">metrics</span>
+        </div>
+        <div class="aspect-square border border-white/10 bg-[#0A0A0A] flex flex-col items-center justify-center text-white/50 hover:text-[#00FFFF] transition-colors hover:border-[#00FFFF]/40 cursor-pointer glow-on-hover gap-3">
+            <iconify-icon icon="solar:stars-bold-duotone" class="text-4xl"></iconify-icon>
+            <span class="text-[10px] font-mono opacity-50">stars</span>
+        </div>
+        <div class="aspect-square border border-white/10 bg-[#0A0A0A] flex flex-col items-center justify-center text-white/50 hover:text-[#00FFFF] transition-colors hover:border-[#00FFFF]/40 cursor-pointer glow-on-hover gap-3">
+            <iconify-icon icon="solar:play-bold-duotone" class="text-4xl"></iconify-icon>
+            <span class="text-[10px] font-mono opacity-50">play</span>
+        </div>
+        <div class="aspect-square border border-white/10 bg-[#0A0A0A] flex flex-col items-center justify-center text-white/50 hover:text-[#00FFFF] transition-colors hover:border-[#00FFFF]/40 cursor-pointer glow-on-hover gap-3">
+            <iconify-icon icon="solar:atom-bold-duotone" class="text-4xl"></iconify-icon>
+            <span class="text-[10px] font-mono opacity-50">atom</span>
+        </div>
+        <div class="aspect-square border border-white/10 bg-[#0A0A0A] flex flex-col items-center justify-center text-white/50 hover:text-[#00FFFF] transition-colors hover:border-[#00FFFF]/40 cursor-pointer glow-on-hover gap-3">
+            <iconify-icon icon="solar:cpu-bold-duotone" class="text-4xl"></iconify-icon>
+            <span class="text-[10px] font-mono opacity-50">hardware</span>
+        </div>
+    </div>
+</section>
+
+<!-- 6. MOTION & DETAILS -->
+<section id="motion" class="py-24 px-0 w-full bg-black/50 z-10 relative overflow-hidden border-b border-white/5">
+    <div class="max-w-[100rem] mx-auto px-6 lg:px-12 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-8 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate">
+      <div>
+        <p class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-4 flex items-center gap-3">
+          <span class="w-8 h-[1px] bg-[#00FFFF]"></span> 05 // Choreography
+        </p>
+        <h2 class="text-3xl lg:text-[4rem] font-medium tracking-tight text-white font-orbitron uppercase leading-[0.9]">Motion Patterns</h2>
+      </div>
+    </div>
+
+    <!-- Infinite Marquee (Gemini style) -->
+    <div class="relative w-full py-12 md:py-16 border-y border-white/10 bg-[#050505] animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] overflow-hidden my-12 shadow-[0_0_100px_rgba(0,0,0,1)]">
+        <div class="absolute left-0 top-0 bottom-0 w-24 md:w-64 z-10 bg-gradient-to-r from-[#050505] to-transparent pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-24 md:w-64 z-10 bg-gradient-to-l from-[#050505] to-transparent pointer-events-none"></div>
+        <div class="flex overflow-hidden w-full">
+            <style>
+                @keyframes marqueeFast { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+                .animate-marquee-fast { animation: marqueeFast 40s linear infinite; }
+            </style>
+            <div class="flex animate-marquee-fast whitespace-nowrap gap-12 md:gap-24 items-center">
+                <h3 class="font-orbitron text-4xl md:text-6xl text-white/10 font-bold uppercase tracking-widest hover:text-[#00FFFF]/50 transition-colors cursor-default">Parametric Design</h3>
+                <iconify-icon icon="solar:asterisk-bold-duotone" class="text-3xl text-white/20"></iconify-icon>
+                <h3 class="font-orbitron text-4xl md:text-6xl text-white/10 font-bold uppercase tracking-widest hover:text-[#00FFFF]/50 transition-colors cursor-default">Living Documentation</h3>
+                <iconify-icon icon="solar:asterisk-bold-duotone" class="text-3xl text-white/20"></iconify-icon>
+                <h3 class="font-orbitron text-4xl md:text-6xl text-white/10 font-bold uppercase tracking-widest hover:text-[#00FFFF]/50 transition-colors cursor-default">Open Source Layouts</h3>
+                <iconify-icon icon="solar:asterisk-bold-duotone" class="text-3xl text-white/20"></iconify-icon>
+                <h3 class="font-orbitron text-4xl md:text-6xl text-white/10 font-bold uppercase tracking-widest hover:text-[#00FFFF]/50 transition-colors cursor-default">Parametric Design</h3>
+                <iconify-icon icon="solar:asterisk-bold-duotone" class="text-3xl text-white/20"></iconify-icon>
+                <h3 class="font-orbitron text-4xl md:text-6xl text-white/10 font-bold uppercase tracking-widest hover:text-[#00FFFF]/50 transition-colors cursor-default">Living Documentation</h3>
+                <iconify-icon icon="solar:asterisk-bold-duotone" class="text-3xl text-white/20"></iconify-icon>
+                <h3 class="font-orbitron text-4xl md:text-6xl text-white/10 font-bold uppercase tracking-widest hover:text-[#00FFFF]/50 transition-colors cursor-default">Open Source Layouts</h3>
+                <iconify-icon icon="solar:asterisk-bold-duotone" class="text-3xl text-white/20"></iconify-icon>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-[100rem] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12">
+        <!-- Hover 3D -->
+        <div class="p-8 border border-white/10 bg-[#0A0A0A] flex flex-col gap-8 items-center justify-center h-80 overflow-hidden relative animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+            <span class="absolute top-4 left-4 text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Physics: 3D Float</span>
+            <div class="w-32 h-40 bg-[#00FFFF]/10 border border-[#00FFFF]/30 shadow-[0_0_30px_rgba(0,255,255,0.1)] floating-card cursor-pointer flex flex-col items-center justify-center gap-4 text-xs text-neutral-300 font-medium">
+                <iconify-icon icon="solar:arrow-up-bold-duotone" class="text-2xl text-[#00FFFF]"></iconify-icon>
+                Z-Axis + Lift
+            </div>
+        </div>
+
+        <!-- Beams Tracking -->
+        <div class="p-8 border border-white/10 bg-[#0A0A0A] flex flex-col gap-8 items-center justify-center h-80 relative overflow-hidden animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both]">
+            <span class="absolute top-4 left-4 text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Ambient: Energy Routing</span>
+            <div class="relative w-full h-full flex items-center justify-center border border-white/5 bg-[#050505]">
+                <div class="beam-border-h" style="bottom: auto; top: 20px;"></div>
+                <div class="beam-border-v" style="left: auto; right: 20px;"></div>
+                <div class="beam-border-h" style="bottom: 20px;"></div>
+                <div class="beam-border-v" style="left: 20px;"></div>
+                <span class="text-[10px] font-mono text-neutral-600 uppercase">Routing Packets</span>
+            </div>
+        </div>
+
+        <!-- Fade Sequencing -->
+        <div class="p-8 border border-white/10 bg-[#0A0A0A] flex flex-col gap-8 items-center justify-center h-80 relative overflow-hidden animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both]">
+            <span class="absolute top-4 left-4 text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Load: Cascade In</span>
+            <div class="flex gap-4">
+                <div class="w-8 h-16 bg-white/10 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0s_both] animate rounded-sm border border-white/20"></div>
+                <div class="w-8 h-24 bg-[#00FFFF]/50 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate rounded-sm border border-[#00FFFF]"></div>
+                <div class="w-8 h-12 bg-white/10 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both] animate rounded-sm border border-white/20"></div>
+            </div>
+            <button onclick="document.querySelectorAll('.animate-on-scroll.animate').forEach(el => el.classList.remove('animate')); setTimeout(()=>document.querySelectorAll('.animate-on-scroll').forEach(el=>el.classList.add('animate')), 100);" class="absolute bottom-6 text-[10px] text-neutral-500 uppercase hover:text-white font-mono border-b border-white/20 pb-1">Trigger Replay</button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="w-full bg-[#050505] relative pt-20 pb-6 overflow-hidden border-t border-white/10 z-10">
+    <!-- Big Watermark -->
+    <div class="relative w-full overflow-hidden pointer-events-none select-none">
+        <h1 class="text-[15vw] leading-none font-bold text-white/5 text-center -mb-8 tracking-tighter font-orbitron">
+            SYSTEM V2
+        </h1>
+    </div>
+    <div class="absolute bottom-6 w-full flex justify-between px-6 lg:px-12 z-30 opacity-60">
+        <p class="text-[10px] text-neutral-500 font-mono uppercase tracking-widest">© 2026 Synth Systems.</p>
+        <p class="text-[10px] text-[#00FFFF] font-mono uppercase tracking-widest">Open Source Core</p>
+    </div>
+</footer>
+
+</body>
+</html>
+
+

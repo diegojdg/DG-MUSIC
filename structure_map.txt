@@ -1,0 +1,102 @@
+9: <!-- Tailwind CSS (via CDN enabled for custom configuration and standalone execution) -->
+29: <!-- Google Fonts for Typography Hierarchy -->
+36: <!-- Iconify for the matching iconography set from design.system -->
+39: <!-- GSAP for core animations and sequence choreography -->
+42: <!-- Swiper.js for the interactive Motion Gallery -->
+252: <!--
+261: <!-- Dynamic Aurora Emulation Layer -->
+264: <div id="aurora-blob1"
+267: <div id="aurora-blob2"
+270: <div id="aurora-blob3"
+275: <!-- System Atmosphere / Grid Layers -->
+279: <!-- Edge vignette shadow for center dominance -->
+283: <!-- Header / Navigation (Structural adaptation) -->
+299: <!-- HERO SECTION / MAIN FOLD -->
+300: <section id="hero" class="pt-32 pb-20 lg:pt-0 lg:pb-0 min-h-screen flex items-center relative overflow-hidden z-10">
+306: <!-- ================= Text Column ================= -->
+328: <!-- Advanced Shimmer Beam Button derived from System -->
+365: <!-- ================= 5-Image Composition Gallery ================= -->
+369: <!-- Main Center Component -->
+380: <!-- Video Right Component -->
+385: <source src="assets/raw_files/The%20Begin%20Video.mp4" type="video/mp4" />
+392: <!-- Center Bottom (Canvas Video Background Card) -->
+397: <source src="assets/raw_files/CANVAS.mp4" type="video/mp4" />
+401: <!-- Top Left (Cover Art) -->
+409: <!-- Bottom Right (Mockup CD swapped) -->
+417: <!-- Top Right (Gabe Portrait) -->
+425: <!-- Bottom Left (Flyer Ludicy replaced with Video) -->
+430: <source src="assets/raw_files/Motion-%20LUDICY.mp4" type="video/mp4" />
+436: <!-- Right Sidebar removed per instructions -->
+439: </section>
+441: <!-- EVENT FLYERS SECTION -->
+442: <section id="event-flyers" class="py-24 px-6 lg:px-12 w-full relative z-10 overflow-hidden bg-[#050505]/95 border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+444: <!-- System Background Integration from Design System -->
+448: <!-- Ambient Aurora Accent -->
+462: <!-- SCROLLING COLUMNS CONTAINER -->
+464: <!-- Top & Bottom Fade Masks -->
+470: <!-- Column 1 (Scrolls Up) -->
+472: <!-- Set 1 -->
+491: <!-- Duplicated Set 1 for seamless scroll -->
+512: <!-- Column 2 (Scrolls Down) -->
+514: <!-- Set 2 -->
+533: <!-- Duplicated Set 2 for seamless scroll -->
+554: <!-- Column 3 (Scrolls Up) -->
+556: <!-- Set 3 -->
+575: <!-- Duplicated Set 3 for seamless scroll -->
+598: </section>
+600: <!-- MOTION GALLERY SECTION -->
+601: <section id="motion-gallery" class="py-24 w-full relative z-10 overflow-hidden bg-[#050505] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+603: <!-- Background Elements -->
+619: <!-- THE MASONRY GALLERY -->
+622: <!-- Card 1 -->
+625: <source src="assets/raw_files/VIDEOS E MOTION/Agenda Mochakk - Out Nov 2023.mp4" type="video/mp4" />
+637: <!-- Card 2 -->
+640: <source src="assets/raw_files/VIDEOS E MOTION/Capa animada.mp4" type="video/mp4" />
+652: <!-- Card 3 -->
+655: <source src="assets/raw_files/VIDEOS E MOTION/Motion - Agenda Kolombo.mp4" type="video/mp4" />
+667: <!-- Card 4 -->
+670: <source src="assets/raw_files/VIDEOS E MOTION/Motion - Flyer Illuzionize.mp4" type="video/mp4" />
+682: <!-- Card 5 -->
+685: <source src="assets/raw_files/VIDEOS E MOTION/Motion - Flyer Vegas.mp4" type="video/mp4" />
+697: <!-- Card 6 -->
+700: <source src="assets/raw_files/VIDEOS E MOTION/Motion - Mc Cabelinho 2.mp4" type="video/mp4" />
+712: <!-- Card 7 -->
+715: <source src="assets/raw_files/VIDEOS E MOTION/Motion - Minimal Return.mp4" type="video/mp4" />
+727: <!-- Card 8 -->
+730: <source src="assets/raw_files/VIDEOS E MOTION/Motion- Victor Lou - Egito 3.mp4" type="video/mp4" />
+742: <!-- Card 9 -->
+745: <source src="assets/raw_files/VIDEOS E MOTION/Reels - Israel Vibes - 21-02.mp4" type="video/mp4" />
+757: <!-- Card 10 -->
+760: <source src="assets/raw_files/VIDEOS E MOTION/Video Djonga - 08-11 - Floripa.mp4" type="video/mp4" />
+772: <!-- Card 11 -->
+775: <source src="assets/raw_files/VIDEOS E MOTION/Video Private - Festival On Board.mp4" type="video/mp4" />
+787: <!-- Card 12 -->
+790: <source src="assets/raw_files/CANVAS.mp4" type="video/mp4" />
+802: <!-- Card 13 -->
+805: <source src="assets/raw_files/Motion-%20LUDICY.mp4" type="video/mp4" />
+817: <!-- Card 14 -->
+820: <source src="assets/raw_files/The%20Begin%20Video.mp4" type="video/mp4" />
+832: <!-- Card 15 -->
+835: <source src="assets/raw_files/VIDEOS E MOTION/Motion 15s - Chihiro - Gabbeh, Daudt ( Remix ).mp4" type="video/mp4" />
+847: <!-- Card 16 -->
+850: <source src="assets/raw_files/VIDEOS E MOTION/Motion 15s - So You Know - GABBEH & DAUDT.mp4" type="video/mp4" />
+862: <!-- Card 17 -->
+865: <source src="assets/raw_files/VIDEOS E MOTION/Motion 1350 Cover Art - Tão Gostosa - Di Jones.mp4" type="video/mp4" />
+877: <!-- Card 18 -->
+880: <source src="assets/raw_files/VIDEOS E MOTION/Reels Motion - Barbie - GABBEH RMX.mp4" type="video/mp4" />
+895: </section>
+898: <!-- Dynamic Fullscreen Media Modal -->
+899: <div id="video-modal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/95 backdrop-blur-xl opacity-0 transition-opacity duration-500">
+900: <!-- Aurora Effect in Modal -->
+904: <!-- Back Button -->
+905: <button id="modal-close-btn" class="absolute top-6 md:top-10 left-6 md:left-10 z-50 flex items-center gap-3 text-white/70 hover:text-[#00FFFF] transition-all duration-300 group cursor-pointer bg-black/40 px-5 py-2.5 rounded-sm border border-white/10 hover:border-[#00FFFF]/50 backdrop-blur-md shadow-2xl">
+910: <!-- Media Content -->
+911: <div class="relative z-10 w-full max-w-[95vw] md:max-w-6xl max-h-[90vh] flex flex-col items-center justify-center p-2 md:p-8 transform scale-95 transition-transform duration-500" id="modal-content-wrapper">
+914: <video id="modal-video-element" controls autoplay playsinline class="max-w-full max-h-[65vh] md:max-h-[75vh] object-contain w-auto mx-auto border-none outline-none">
+915: <source id="modal-video-source" src="" type="video/mp4" />
+921: <h3 id="modal-title" class="font-orbitron font-bold text-white text-lg md:text-3xl tracking-widest uppercase line-clamp-1">TITLE</h3>
+922: <p id="modal-category" class="text-[10px] md:text-xs text-[#00FFFF] font-mono uppercase tracking-[0.3em] mt-1 md:mt-2 opacity-80">CATEGORY</p>
+928: <!-- Javascript Interactions & Logic -->
+1014: const videoModal = document.getElementById('video-modal');
+1015: const modalVideo = document.getElementById('modal-video-element');
+1016: const modalSrc = document.getElementById('modal-video-source');

@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Graphic Designer | Visual Direction</title>
+
+    <!-- Tailwind CSS (via CDN enabled for custom configuration and standalone execution) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgDeep: '#050505',
+                        accent: '#00FFFF',
+                        cyanAccent: '#00D8FF'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        orbitron: ['Orbitron', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts for Typography Hierarchy -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Orbitron:wght@400;500;700;900&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Iconify for the matching iconography set from design.system -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
+
+    <!-- GSAP for core animations and sequence choreography -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body
+    class="selection:bg-[#00FFFF] selection:text-black min-h-screen flex flex-col overflow-x-hidden relative bg-[#050505]">
+
+    <!-- 
+=================================================
+Background Environment 
+=================================================
+Uses GSAP-animated CSS blurred blobs to simulate Aurora Borealis efficiently and smoothly. 
+No Three.js needed - this runs seamlessly with GPU acceleration and blends naturally.
+-->
+    <div class="fixed inset-0 min-h-screen z-0 overflow-hidden pointer-events-none">
+
+        <!-- Dynamic Aurora Emulation Layer -->
+        <div class="absolute inset-[-10%] pointer-events-none mix-blend-screen aurora-mask"
+            style="filter: blur(90px) saturate(1.8);">
+            <div id="aurora-blob1"
+                class="absolute top-[10%] left-[0%] w-[60vw] h-[50vh] bg-gradient-to-r from-[#00FFFF] to-[#0066FF] rounded-[100%] opacity-[0.25]">
+            </div>
+            <div id="aurora-blob2"
+                class="absolute top-[40%] right-[0%] w-[50vw] h-[60vh] bg-gradient-to-l from-[#0044FF] to-[#00FFFF] rounded-[100%] opacity-[0.2]">
+            </div>
+            <div id="aurora-blob3"
+                class="absolute bottom-[0%] left-[20%] w-[80vw] h-[40vh] bg-gradient-to-t from-[#00FFFF] to-transparent rounded-[100%] opacity-[0.15]">
+            </div>
+        </div>
+
+        <!-- System Atmosphere / Grid Layers -->
+        <div class="absolute inset-0 grid-bg opacity-40 z-0"></div>
+        <div class="fixed inset-0 crt-scanlines z-[1] opacity-35"></div>
+
+        <!-- Edge vignette shadow for center dominance -->
+        <div class="absolute inset-0 z-10 shadow-[inset_0_0_150px_rgba(5,5,5,0.95)] pointer-events-none"></div>
+    </div>
+
+    <!-- Header / Navigation (Structural adaptation) -->
+    <nav class="absolute top-0 left-0 w-full z-[100] px-6 lg:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 text-xs font-mono uppercase tracking-widest text-[#d4d4d4] gsap-in"
+        data-gsap="fadeDown">
+        <div class="flex items-center gap-3 hover:text-[#00FFFF] transition-colors cursor-pointer group">
+            <div class="w-2 h-2 bg-[#00FFFF] animate-pulse rounded-full shadow-[0_0_10px_rgba(0,255,255,0.8)]"></div>
+            <span class="font-orbitron font-medium tracking-[0.2em] text-white" data-i18n="logoText">DIEGO JAQUES <span
+                    class="text-neutral-600 font-light group-hover:text-white/50 transition-colors">//
+                    DSGN</span></span>
+        </div>
+        <div class="flex gap-4 md:gap-8 justify-center items-center font-semibold text-[9px] md:text-xs tracking-widest text-neutral-500 flex-wrap text-center">
+            <a href="#event-flyers" class="hover:text-[#00FFFF] text-white transition-colors cursor-pointer block" data-i18n="navFlyers">Flyers</a>
+            <a href="#motion-gallery" class="hover:text-[#00FFFF] transition-colors cursor-pointer block" data-i18n="navVisual">Visual Experience</a>
+            <a href="#" class="hover:text-[#00FFFF] transition-colors cursor-pointer block" data-i18n="navCover">Cover Art</a>
+            <a href="#about-me" class="hover:text-[#00FFFF] transition-colors cursor-pointer block" data-i18n="navAbout">Quem Sou eu</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION / MAIN FOLD -->
+    <section id="hero" class="pt-32 pb-20 lg:pt-0 lg:pb-0 min-h-screen flex items-center relative overflow-hidden z-10">
+        <div class="beam-border-h z-30"></div>
+
+        <main
+            class="w-full lg:w-[80%] grid grid-cols-1 lg:grid-cols-12 px-6 lg:px-0 gap-12 relative z-10 max-w-[100rem] mx-auto hero-wrapper">
+
+            <!-- ================= Text Column ================= -->
+            <div class="lg:col-span-5 flex flex-col justify-center z-30 relative hero-text-wrapper">
+
+                <p class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-6 flex items-center gap-3 gsap-in"
+                    data-gsap="fadeUp">
+                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> <span data-i18n="heroPre">ART + MOTION + VIDEO</span>
+                </p>
+
+                <h1 class="font-orbitron xl:text-[6rem] lg:text-[4.5rem] leading-[0.9] uppercase text-5xl font-medium text-white tracking-tighter mb-8 drop-shadow-[0_0_40px_rgba(0,255,255,0.2)] gsap-in"
+                    data-gsap="fadeUp" data-gsap-delay="0.1">
+                    <span data-i18n="heroTitle1">PORTFÓLIO</span><br class="" />
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50" data-i18n="heroTitle2">ONLINE</span>
+                </h1>
+
+                <p class="text-lg text-neutral-400 max-w-md leading-relaxed mb-12 font-light border-l-2 border-[#00FFFF]/50 pl-5 py-2 backdrop-blur-sm bg-white/5 gsap-in"
+                    data-gsap="fadeUp" data-gsap-delay="0.2" data-i18n="heroDesc">
+                    A música gera emoções, o visual cria memórias.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-start gap-4 gsap-in" data-gsap="fadeUp" data-gsap-delay="0.3">
+                    <!-- Advanced Shimmer Beam Button derived from System (Explore Portfolio) -->
+                    <a href="#event-flyers" class="group relative origin-left pt-2 pb-2 block">
+                        <div class="-inset-2 group-hover:opacity-100 transition duration-500 bg-[#00FFFF]/30 opacity-0 rounded-full absolute blur-xl"></div>
+                        <div class="absolute -inset-[1px] rounded-full overflow-hidden opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#00FFFF_360deg)] animate-[spin_2s_linear_infinite]"></div>
+                        </div>
+                        <button class="group relative z-10 flex items-center justify-center overflow-hidden rounded-full p-[1px] leading-none cursor-pointer">
+                            <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#00FFFF_360deg)] block"></span>
+                            <span class="relative flex h-full w-full items-center rounded-full bg-[#050505] pt-4 pr-10 pb-4 pl-10 ring-1 ring-white/10 group-hover:ring-transparent transition-all">
+                                <span class="absolute inset-0 overflow-hidden rounded-full block">
+                                    <span class="absolute top-0 left-0 h-full w-full -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:animate-[shimmer_1.5s_infinite] group-hover:opacity-100 block"></span>
+                                </span>
+                                <span class="relative z-10 flex items-center">
+                                    <span class="text-sm font-bold tracking-widest uppercase text-white font-orbitron" data-i18n="heroBtnExplore">Explore Portfolio</span>
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+
+                    <!-- Similar WhatsApp Button for "Orçamento" -->
+                    <a href="https://wa.me/5548988513522?text=Olá,%20vim%20através%20do%20seu%20site%20e%20gostaria%20de%20mais%20informações." target="_blank" rel="noopener noreferrer" class="group relative origin-left pt-2 pb-2 block">
+                        <div class="-inset-2 group-hover:opacity-100 transition duration-500 bg-[#00FFFF]/30 opacity-0 rounded-full absolute blur-xl"></div>
+                        <div class="absolute -inset-[1px] rounded-full overflow-hidden opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#00FFFF_360deg)] animate-[spin_2s_linear_infinite]"></div>
+                        </div>
+                        <button class="group relative z-10 flex items-center justify-center overflow-hidden rounded-full p-[1px] leading-none cursor-pointer">
+                            <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#00FFFF_360deg)] block"></span>
+                            <span class="relative flex h-full w-full items-center rounded-full bg-[#050505] pt-4 pr-10 pb-4 pl-10 ring-1 ring-white/10 group-hover:ring-transparent transition-all">
+                                <span class="absolute inset-0 overflow-hidden rounded-full block">
+                                    <span class="absolute top-0 left-0 h-full w-full -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:animate-[shimmer_1.5s_infinite] group-hover:opacity-100 block"></span>
+                                </span>
+                                <span class="relative z-10 flex items-center">
+                                    <span class="text-sm font-bold tracking-widest uppercase text-white font-orbitron" data-i18n="heroBtnQuote">Orçamento</span>
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ================= 5-Image Composition Gallery ================= -->
+            <div
+                class="lg:col-span-7 relative h-[650px] lg:h-[750px] flex items-center justify-center perspective-[1000px] mt-10 lg:mt-0 z-20">
+
+                <!-- Main Center Component -->
+                <div class="parallax-layer-2 absolute z-[12] top-[20%] lg:top-[18%] left-[5%] lg:left-[12%] w-[65%] lg:w-[50%] aspect-square bg-neutral-900 border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.95)] floating-card transform rotate-[-2deg] glow-on-hover gsap-in"
+                    data-gsap="scaleUp" data-gsap-delay="0.4">
+                    <img alt="Mockup CD"
+                        class="image-cover opacity-90 transition-all duration-700 hover:opacity-100 saturate-[0.8] hover:saturate-100 mix-blend-lighten hover:mix-blend-normal"
+                        src="assets/images/Mockup-cd-vintage-culture.webp" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 pointer-events-none">
+                    </div>
+                </div>
+
+                <!-- Video Right Component -->
+                <div class="parallax-layer-2 absolute top-[45%] lg:top-[28%] right-[5%] lg:right-[2%] w-[55%] lg:w-[45%] aspect-square bg-neutral-900 border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.95)] floating-card z-[10] transform rotate-[4deg] glow-on-hover gsap-in"
+                    data-gsap="scaleUp" data-gsap-delay="0.5">
+                    <div class="relative w-full h-full overflow-hidden">
+                        <img src="https://vumbnail.com/1181165010.jpg" 
+                            class="image-cover absolute inset-0 w-full h-full object-cover opacity-90 transition-all duration-700 saturate-[0.8]" 
+                            alt="The Begin" />
+                        <iframe 
+                            data-src="https://player.vimeo.com/video/1181165010?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0" 
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" 
+                            frameborder="0" allow="autoplay; fullscreen"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 pointer-events-none">
+                    </div>
+                </div>
+
+                <!-- Center Bottom (Canvas Video Background Card) -->
+                <div class="parallax-layer-3 absolute top-[80%] lg:top-[65%] lg:bottom-auto right-[1%] lg:right-auto left-auto lg:left-[35%] w-[40%] lg:w-[25%] aspect-square bg-neutral-900 border border-white/10 shadow-2xl floating-card z-[2] transform -rotate-6 glow-on-hover gsap-in overflow-hidden"
+                    data-gsap="scaleUp" data-gsap-delay="0.65">
+                    <div class="relative w-full h-full overflow-hidden">
+                        <img src="https://vumbnail.com/1181164173.jpg" 
+                            class="image-cover absolute inset-0 w-full h-full object-cover opacity-90 transition-all duration-700 saturate-[0.8]" 
+                            alt="Canvas" />
+                        <iframe 
+                            data-src="https://player.vimeo.com/video/1181164173?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0" 
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" 
+                            frameborder="0" allow="autoplay; fullscreen"></iframe>
+                    </div>
+                </div>
+
+                <!-- Top Left (Cover Art) -->
+                <div class="parallax-layer-3 absolute top-[2%] lg:top-[8%] left-[0%] lg:left-[2%] w-[40%] lg:w-[25%] aspect-square bg-neutral-900 border border-white/10 shadow-xl floating-card z-[5] transform -rotate-12 glow-on-hover gsap-in"
+                    data-gsap="scaleUp" data-gsap-delay="0.5">
+                    <img alt="Cover Art"
+                        class="image-cover opacity-90 transition-all duration-700 hover:opacity-100 saturate-[0.8] hover:saturate-100 mix-blend-lighten hover:mix-blend-normal"
+                        src="assets/images/Cover-Art---Tão-Gostosa.webp" />
+                </div>
+
+                <!-- Bottom Right (Mockup CD swapped) -->
+                <div class="parallax-layer-1 absolute bottom-[5%] lg:bottom-[10%] left-[10%] lg:left-auto lg:right-[8%] w-[50%] lg:w-[35%] aspect-square bg-neutral-900 border border-white/10 shadow-2xl floating-card z-20 transform rotate-6 glow-on-hover gsap-in"
+                    data-gsap="scaleUp" data-gsap-delay="0.6">
+                    <img alt="Editorial main collage"
+                        class="image-cover opacity-90 transition-all duration-700 hover:opacity-100 saturate-[0.8] hover:saturate-100 mix-blend-lighten hover:mix-blend-normal"
+                        src="assets/images/Colagem-Louie-e-avrosse- WEBP.webp" />
+                </div>
+
+                <!-- Top Right (Gabe Portrait) -->
+                <div class="parallax-layer-2 absolute top-[5%] lg:top-[8%] right-[2%] lg:right-[15%] w-[35%] lg:w-[22%] aspect-square bg-neutral-900 border border-white/10 shadow-lg floating-card z-[5] transform rotate-[15deg] glow-on-hover gsap-in"
+                    data-gsap="scaleUp" data-gsap-delay="0.7">
+                    <img alt="Gabe Portrait"
+                        class="image-cover opacity-90 transition-all duration-700 hover:opacity-100 saturate-[0.8] hover:saturate-100 mix-blend-lighten hover:mix-blend-normal"
+                        src="assets/images/Gabe.webp" />
+                </div>
+
+                <!-- Bottom Left (Flyer Ludicy replaced with Video) -->
+                <div class="parallax-layer-1 absolute bottom-[0%] lg:bottom-[5%] left-[5%] lg:left-[-12%] w-[35%] lg:w-48 aspect-[9/16] bg-neutral-900 border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,255,255,0.1)] floating-card z-30 transform -rotate-[5deg] glow-on-hover gsap-in hidden md:block overflow-hidden"
+                    data-gsap="scaleUp" data-gsap-delay="0.8">
+                    <div class="relative w-full h-full overflow-hidden">
+                        <img src="https://vumbnail.com/1181164587.jpg" 
+                            class="image-cover absolute inset-0 w-full h-full object-cover opacity-90 transition-all duration-700 saturate-[0.8]" 
+                            alt="Ludicy" />
+                        <iframe 
+                            data-src="https://player.vimeo.com/video/1181164587?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0" 
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" 
+                            frameborder="0" allow="autoplay; fullscreen"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar removed per instructions -->
+
+        </main>
+        
+        <!-- Language Translator Widget Float (Positioned relative to bottom of hero) -->
+        <div class="absolute bottom-6 md:bottom-12 right-6 md:right-12 z-50 flex gap-2 items-center bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)] gsap-in" data-gsap="fadeUp" data-gsap-delay="0.9">
+            <span class="text-[10px] text-neutral-500 font-mono tracking-widest mr-2 uppercase">Lang</span>
+            <button data-lang-btn="pt" class="text-xs font-semibold text-[#00FFFF] hover:text-[#00FFFF] transition-colors cursor-pointer px-1">PT</button>
+            <span class="text-white/20 text-xs">/</span>
+            <button data-lang-btn="en" class="text-xs font-semibold text-white/50 hover:text-[#00FFFF] transition-colors cursor-pointer px-1">EN</button>
+            <span class="text-white/20 text-xs">/</span>
+            <button data-lang-btn="es" class="text-xs font-semibold text-white/50 hover:text-[#00FFFF] transition-colors cursor-pointer px-1">ES</button>
+        </div>
+        
+    </section>
+
+
+
+<!-- MOTION GALLERY SECTION -->
+    <section id="motion-gallery"
+        class="py-24 w-full relative z-10 overflow-hidden bg-[#050505] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+
+        <!-- Background Elements -->
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-[#00FFFF]/10 via-[#050505] to-[#050505] z-[0] pointer-events-none">
+        </div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-[#00FFFF] rounded-[100%] opacity-[0.05] pointer-events-none blur-[120px] mix-blend-screen aurora-mask z-[0]">
+        </div>
+        <div class="absolute inset-0 crt-scanlines pointer-events-none z-[1] opacity-20"></div>
+
+        <div
+            class="w-full lg:w-[80%] max-w-[100rem] mx-auto px-6 lg:px-0 relative z-10 flex flex-col items-center justify-center">
+
+            <div class="text-center mb-16 max-w-2xl gsap-in px-6 lg:px-0" data-gsap="fadeUp">
+                <p class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-3 flex items-center justify-center gap-3">
+                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> VISUAL EXPERIENCES <span class="w-8 h-[1px] bg-[#00FFFF]"></span>
+                </p>
+                <h2 class="font-orbitron lg:text-5xl text-4xl font-medium text-white tracking-tighter mb-4 drop-shadow-[0_0_30px_rgba(0,255,255,0.15)]">
+                    MOTION <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">VIDEOS</span>
+                </h2>
+            </div>
+
+            <!-- THE MASONRY GALLERY -->
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 w-full gsap-in" data-gsap="fadeUp"
+                data-gsap-delay="0.2">
+
+                <!-- Card 1 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180788887.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Agenda Mochakk - Out Nov 2023" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180788887?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180788887?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3 class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">AGENDA MOCHAKK</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">MOTION GRAPHICS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180790528.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Capa animada" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180790528?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180790528?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3 class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">COVER ART VINTAGE CULTURE</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">COVER ART</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180790879.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Motion - Agenda Kolombo" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180790879?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180790879?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                AGENDA KOLOMBO</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">PROMO VIDEO
+                            </p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180791309.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Motion - Flyer Illuzionize" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180791309?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180791309?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3 class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">ILLUSIONIZE</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">MOTION GRAPHICS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180792245.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Motion - Flyer Vegas" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180792245?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180792245?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                VEGAS</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">MUSIC MOTION PROMO</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180792444.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Motion - Mc Cabelinho 2" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180792444?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180792444?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                MC CABELINHO</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">MOTION
+                                GRAPHICS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180792478.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Motion - Minimal Return" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180792478?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180792478?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3 class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">MINIMAL RETURN</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">MOTION GRAPHICS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180792641.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Victor Lou Egito" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180792641?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180792641?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                VICTOR LOU</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">MOTION
+                                GRAPHICS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1006742054.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Reels - Israel Vibes - 21-02" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1006742054?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1006742054?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                ISRAEL VIBES</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">SOCIAL
+                                REELS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180792404.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Djonga Floripa" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180792404?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180792404?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3 class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">DJONGA FLORIPA</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">VIDEO PROMO</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 11 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1006747710.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Video Private - Festival On Board" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1006747710?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1006747710?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                FESTIVAL ON BOARD</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">VIDEO PROMO</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 12 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1181164173.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Canvas" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1181164173?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1181164173?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3 class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">LOVE</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">CANVAS SPOTIFY</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 13 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1181164587.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Ludicy" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1181164587?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1181164587?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                LUDICY</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">MOTION
+                                GRAPHICS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 14 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1181165010.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="The Begin" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1181165010?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1181165010?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                THE BEGIN</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">VIDEO
+                                EXPERIENCE</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 15 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180792508.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Chihiro - Gabbeh, Daudt" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180792508?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180792508?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                CHIHIRO REMIX</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">MOTION CANVAS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 16 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180792546.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="So You Know - GABBEH" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180792546?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180792546?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                SO YOU KNOW</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">MOTION
+                                GRAPHICS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 17 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180792581.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Tão Gostosa - Di Jones" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180792581?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180792581?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                TÃO GOSTOSA</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">COVER ART
+                            </p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+
+                <!-- Card 18 -->
+                <div
+                    class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
+                    <div class="relative w-full" style="padding-top:56.25%">
+                        <img src="https://vumbnail.com/1180792357.jpg"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            loading="lazy" alt="Barbie RMX" />
+                        <iframe
+                            data-src="https://player.vimeo.com/video/1180792357?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+                            data-modal-src="https://player.vimeo.com/video/1180792357?autoplay=1&byline=0&title=0"
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end z-10">
+                        <div class="flex-1 pr-4">
+                            <h3
+                                class="font-orbitron font-bold text-white text-xl tracking-wide group-hover:text-[#00FFFF] transition-colors line-clamp-1">
+                                BARBIE RMX</h3>
+                            <p class="text-[10px] text-neutral-400 font-mono uppercase tracking-widest mt-2">SOCIAL
+                                REELS</p>
+                        </div>
+                        <button
+                            class="bg-black/50 border border-white/20 hover:border-[#00FFFF] text-white hover:text-[#00FFFF] text-xs px-4 py-2 rounded-sm backdrop-blur-md transition-colors glow-on-hover shrink-0 cursor-pointer">View</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="beam-border-h z-10" style="bottom: 0px; top: auto; animation-delay: 1.2s; animation-duration: 9s;">
+        </div>
+    </section>
+
+
+    <!-- EVENT FLYERS SECTION -->
+    <section id="event-flyers"
+        class="py-24 px-6 lg:px-12 w-full relative z-10 overflow-hidden bg-[#050505]/95 border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+
+        <!-- System Background Integration from Design System -->
+        <div class="absolute inset-0 grid-bg opacity-30 z-0 pointer-events-none"></div>
+        <div class="beam-border-h z-10" style="bottom: auto; top: 0;"></div>
+
+        <!-- Ambient Aurora Accent -->
+        <div
+            class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[60vh] bg-gradient-to-t from-[#00FFFF] to-transparent rounded-[100%] opacity-[0.05] pointer-events-none filter blur-[90px] z-0 mix-blend-screen aurora-mask">
+        </div>
+
+        <div class="max-w-[100rem] mx-auto relative z-10 w-full flex flex-col items-center">
+
+            <div class="text-center mb-16 max-w-2xl gsap-in" data-gsap="fadeUp">
+                <p
+                    class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-3 flex items-center justify-center gap-3">
+                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> FLYERS <span class="w-8 h-[1px] bg-[#00FFFF]"></span>
+                </p>
+                <h2
+                    class="font-orbitron lg:text-5xl text-4xl font-medium text-white tracking-tighter mb-4 drop-shadow-[0_0_30px_rgba(0,255,255,0.15)]">
+                    EVENTOS E <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">ARTISTAS</span>
+                </h2>
+            </div>
+
+            <!-- SCROLLING COLUMNS CONTAINER -->
+            <div
+                class="relative w-full h-[65vh] min-h-[500px] md:h-[80vh] md:min-h-[700px] overflow-hidden flex justify-center perspective-[1000px]">
+                <!-- Top & Bottom Fade Masks -->
+                <div
+                    class="absolute inset-x-0 top-0 h-16 md:h-40 bg-gradient-to-b from-[#050505] via-[#050505]/90 to-transparent z-20 pointer-events-none">
+                </div>
+                <div
+                    class="absolute inset-x-0 bottom-0 h-16 md:h-40 bg-gradient-to-t from-[#050505] via-[#050505]/90 to-transparent z-20 pointer-events-none">
+                </div>
+
+                <div
+                    class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 h-full w-full max-w-5xl relative z-10 transform md:-rotate-[2deg] md:scale-[1.05]">
+
+                    <!-- Column 1 (Scrolls Up) -->
+                    <div class="scroll-track" style="animation-duration: 45s;">
+                        <!-- Set 1 -->
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/AGENDA-KOLOMBO-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER---MOCHAKK-Special-Set%20copiar.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER-ILLUSIONIZE-3-PNG-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer---TrapLaudo.png" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer-MC-Daniel-PNG-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Story-Don-Juna-Ficiticio-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <!-- Duplicated Set 1 for seamless scroll -->
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/AGENDA-KOLOMBO-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER---MOCHAKK-Special-Set%20copiar.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER-ILLUSIONIZE-3-PNG-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer---TrapLaudo.png" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer-MC-Daniel-PNG-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Story-Don-Juna-Ficiticio-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                    </div>
+
+                    <!-- Column 2 (Scrolls Down) -->
+                    <div class="scroll-track" style="animation-name: vertical-scroll-reverse; animation-duration: 55s;">
+                        <!-- Set 2 -->
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Arte-Buterfly-vegas-blur-menor.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER---SKAZI---ISRAEL-VIBES.png" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer---Aruna.png" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer-3030-PNG-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/STORY-PAGO-FUNK-2-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Story-Mc-Cabelinho-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <!-- Duplicated Set 2 for seamless scroll -->
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Arte-Buterfly-vegas-blur-menor.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER---SKAZI---ISRAEL-VIBES.png" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer---Aruna.png" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer-3030-PNG-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/STORY-PAGO-FUNK-2-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Story-Mc-Cabelinho-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                    </div>
+
+                    <!-- Column 3 (Scrolls Up) -->
+                    <div class="scroll-track hidden md:flex" style="animation-duration: 50s;">
+                        <!-- Set 3 -->
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER---LUDICY.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER-DNA-FESTIVAL-PNG-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer---Bhaskar.png" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer-Egito%20min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Story-%20Digitronic-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Story-Vibe-Agosto-2022-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <!-- Duplicated Set 3 for seamless scroll -->
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER---LUDICY.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/FLYER-DNA-FESTIVAL-PNG-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer---Bhaskar.png" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Flyer-Egito%20min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Story-%20Digitronic-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                        <div
+                            class="w-full aspect-[9/16] bg-neutral-900 border border-white/10 shadow-lg floating-card overflow-hidden group">
+                            <img src="assets/images/flyers/Story-Vibe-Agosto-2022-min.webp" alt="Flyer"
+                                class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-500" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Fullscreen Media Modal -->
+    <div id="video-modal"
+        class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/95 backdrop-blur-xl opacity-0 transition-opacity duration-500">
+        <!-- Aurora Effect in Modal -->
+        <div class="absolute inset-0 z-0 pointer-events-none grid-bg opacity-30"></div>
+        <div
+            class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[60vh] bg-gradient-to-t from-[#00FFFF] to-transparent rounded-[100%] opacity-[0.08] pointer-events-none filter blur-[90px] mix-blend-screen aurora-mask z-0">
+        </div>
+
+        <!-- Back Button -->
+        <button id="modal-close-btn"
+            class="absolute top-6 md:top-10 left-6 md:left-10 z-50 flex items-center gap-3 text-white/70 hover:text-[#00FFFF] transition-all duration-300 group cursor-pointer bg-black/40 px-5 py-2.5 rounded-sm border border-white/10 hover:border-[#00FFFF]/50 backdrop-blur-md shadow-2xl">
+            <iconify-icon icon="solar:arrow-left-line-duotone"
+                class="text-xl group-hover:-translate-x-1 transition-transform"></iconify-icon>
+            <span class="font-orbitron font-medium text-xs tracking-[0.2em] pt-1">BACK</span>
+        </button>
+
+        <!-- Media Content -->
+        <div class="relative z-10 w-full max-w-[95vw] md:max-w-6xl max-h-[90vh] flex flex-col items-center justify-center p-2 md:p-8 transform scale-95 transition-transform duration-500"
+            id="modal-content-wrapper">
+
+            <div
+                class="w-full relative shadow-[0_0_80px_rgba(0,255,255,0.1)] border border-white/10 rounded-sm overflow-hidden bg-[#0A0A0A] flex items-center justify-center">
+                <video id="modal-video-element" controls autoplay playsinline
+                    class="hidden max-w-full max-h-[65vh] md:max-h-[75vh] object-contain w-auto mx-auto border-none outline-none">
+                    <source id="modal-video-source" src="" type="video/mp4" />
+                </video>
+                <iframe id="modal-iframe-element" src="" class="hidden w-full" style="height:70vh" frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div
+                class="mt-6 md:mt-8 w-full flex justify-between items-end border-l-2 border-[#00FFFF] pl-4 md:pl-6 max-w-4xl mx-auto">
+                <div>
+                    <h3 id="modal-title"
+                        class="font-orbitron font-bold text-white text-lg md:text-3xl tracking-widest uppercase line-clamp-1">
+                        TITLE</h3>
+                    <p id="modal-category"
+                        class="text-[10px] md:text-xs text-[#00FFFF] font-mono uppercase tracking-[0.3em] mt-1 md:mt-2 opacity-80">
+                        CATEGORY</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT ME / QUEM SOU EU SECTION (Moved to last fold) -->
+    <section id="about-me" class="py-24 lg:py-32 w-full relative z-10 overflow-hidden bg-[#050505] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+        
+        <!-- Ambient Background / Grid -->
+        <div class="absolute inset-0 grid-bg opacity-20 z-0 pointer-events-none"></div>
+        <div class="absolute top-1/2 right-[10%] -translate-y-1/2 w-[70vw] h-[70vh] bg-gradient-to-tl from-[#00FFFF] to-transparent rounded-[100%] opacity-[0.03] pointer-events-none filter blur-[120px] mix-blend-screen aurora-mask z-0"></div>
+
+        <div class="w-full lg:w-[85%] max-w-[100rem] mx-auto px-6 lg:px-0 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <!-- Left Column: Visual Assets with hover Z-index swap -->
+            <div class="lg:col-span-5 relative w-full aspect-[4/5] perspective-[1000px] flex items-center justify-center mt-10 lg:mt-0 gsap-in group" data-gsap="fadeLeft">
+                
+                <!-- Main Portrait (Normally in front) -->
+                <div class="w-[65%] lg:w-[70%] aspect-[4/5] bg-[#0A0A0A] border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.9)] floating-card z-20 group-hover:z-10 transition-all duration-500 transform -rotate-[3deg] overflow-hidden">
+                    <img src="assets/images/Foto-quem-sou-eu-Edit.png" loading="lazy" alt="Designer Portrait" class="image-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-700 opacity-90 group-hover:opacity-100" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                </div>
+
+                <!-- Floating Video Component (Normally behind, comes to front on hover) -->
+                <div class="absolute bottom-[10%] lg:bottom-[15%] right-[5%] lg:right-[0%] w-[30%] lg:w-[32%] aspect-[9/16] bg-[#0A0A0A] border border-[#00FFFF]/20 shadow-[0_30px_60px_-15px_rgba(0,255,255,0.4)] floating-card z-10 group-hover:z-30 transition-all duration-500 transform rotate-[4deg] group-hover:rotate-0 group-hover:scale-105 overflow-hidden hidden md:block">
+                    <div class="relative w-full h-full">
+                        <img src="https://vumbnail.com/1180792404.jpg" 
+                            class="image-cover absolute inset-0 w-full h-full object-cover opacity-90 transition-all duration-700 saturate-[0.8]" 
+                            alt="About Me Video" />
+                        <iframe 
+                            data-src="https://player.vimeo.com/video/1180792404?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0" 
+                            class="lazy-iframe absolute inset-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" 
+                            frameborder="0" allow="autoplay; fullscreen"></iframe>
+                    </div>
+                </div>
+
+                <!-- Decorative System HUD Element -->
+                <div class="absolute top-[5%] left-[0%] w-24 h-24 border border-[#00FFFF]/20 rounded-full animate-[spin_8s_linear_infinite] pointer-events-none z-30">
+                    <div class="absolute top-0 left-1/2 w-1 h-3 bg-[#00FFFF]/50 -translate-x-1/2"></div>
+                </div>
+                <p class="absolute bottom-[20%] left-[-5%] text-[#00FFFF] font-mono text-[10px] uppercase tracking-[0.4em] transform -rotate-90 origin-left opacity-60 z-30">EST 2026 // VISUAL EXPERIENCES</p>
+            </div>
+
+            <!-- Right Column: Context & Bio -->
+            <div class="lg:col-span-7 flex flex-col justify-center z-30 lg:pl-10">
+                <p class="font-orbitron text-xs uppercase tracking-[0.3em] text-[#00FFFF] mb-6 flex items-center gap-3 gsap-in" data-gsap="fadeUp">
+                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> QUEM SOU EU
+                </p>
+
+                <h2 class="font-orbitron lg:text-3xl text-2xl font-light tracking-[0.1em] text-white/90 mb-8 drop-shadow-[0_0_20px_rgba(0,255,255,0.15)] gsap-in uppercase border-b border-[#00FFFF]/20 pb-4 inline-block" data-gsap="fadeUp" data-gsap-delay="0.1">
+                    Designer gráfico, Motion designer<br/>
+                    e <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/70 font-medium">Editor de Vídeo</span>
+                </h2>
+
+                <div class="space-y-6 text-neutral-400 font-light text-[1rem] leading-relaxed mb-10 border-l-2 border-[#00FFFF]/30 pl-6 backdrop-blur-sm bg-white/5 py-4 gsap-in" data-gsap="fadeUp" data-gsap-delay="0.2">
+                    <p>
+                        Transformo ideias em experiências visuais para música, eventos e artistas que querem se destacar.
+                    </p>
+                    <p>
+                        Antes do design, eu vivi esse mercado. Fui DJ por mais de 15 anos — do open format à produção musical — entendendo na prática o universo dos eventos, a importância dos bastidores e o nível de dedicação que tudo isso exige.
+                    </p>
+                    <p>
+                        O visual sempre fez parte dessa jornada. Desde cedo, eu já criava capas, flyers e vídeos como forma de expressar minha identidade além da música. Com a pandemia e o nascimento do meu filho, decidi focar totalmente no design e no audiovisual.
+                    </p>
+                    <p class="text-white/80 font-medium">
+                        Hoje, uno essa vivência para dar vida a projetos únicos.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 gsap-in" data-gsap="fadeUp" data-gsap-delay="0.3">
+                    <div class="px-5 py-3 border border-white/10 rounded-sm bg-[#050505]/50 text-[10px] font-mono tracking-widest uppercase text-white shadow-lg hover:border-[#00FFFF]/50 transition-colors inline-block">
+                        <span class="text-[#00FFFF] mr-2">✦</span> EXPERIÊNCIA VISUAL
+                    </div>
+                    <div class="px-5 py-3 border border-white/10 rounded-sm bg-[#050505]/50 text-[10px] font-mono tracking-widest uppercase text-white shadow-lg hover:border-[#00FFFF]/50 transition-colors inline-block">
+                        <span class="text-[#00FFFF] mr-2">✦</span> IDENTIDADE DE ARTISTAS
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION (Creative & Minimal) -->
+    <footer class="w-full bg-[#050505] relative pt-20 pb-12 overflow-hidden border-t border-white/10 z-10 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+        <!-- Big Watermark Background -->
+        <div class="absolute inset-0 w-full flex items-center justify-center overflow-hidden pointer-events-none select-none">
+            <h1 class="text-[12vw] leading-none font-bold text-white/[0.02] text-center tracking-tighter font-orbitron whitespace-nowrap pt-12">
+                PORTFÓLIO V2
+            </h1>
+        </div>
+        
+        <div class="relative z-30 max-w-[100rem] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+            
+            <div class="flex items-center gap-4">
+                <div class="w-3 h-3 bg-[#00FFFF] animate-pulse rounded-full shadow-[0_0_15px_rgba(0,255,255,0.7)]"></div>
+                <div>
+                    <span class="font-orbitron font-medium tracking-[0.2em] text-white text-xs block">C R E A T I V E // DSGN</span>
+                    <span class="font-mono text-[10px] text-neutral-600 tracking-widest uppercase block mt-1">Independent Visual Artist</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:border-[#00FFFF]/50 hover:bg-[#00FFFF]/10 transition-all duration-300">
+                    <iconify-icon icon="ri:behance-fill" class="text-xl text-neutral-400 group-hover:text-[#00FFFF] transition-colors duration-300"></iconify-icon>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:border-[#00FFFF]/50 hover:bg-[#00FFFF]/10 transition-all duration-300">
+                    <iconify-icon icon="ri:instagram-line" class="text-xl text-neutral-400 group-hover:text-[#00FFFF] transition-colors duration-300"></iconify-icon>
+                </a>
+            </div>
+            
+            <div class="text-right">
+                <p class="text-[10px] text-neutral-500 font-mono uppercase tracking-widest">© 2026 // ALL RIGHTS RESERVED.</p>
+                <p class="text-[10px] text-[#00FFFF]/50 font-mono uppercase tracking-widest mt-1 hover:text-[#00FFFF] transition-colors cursor-pointer">FLORIPA - SC - BRASIL</p>
+            </div>
+            
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-24 right-6 md:bottom-[7.5rem] md:right-8 z-[140] flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-black/50 backdrop-blur-lg rounded-full shadow-[0_0_20px_rgba(0,255,255,0.1)] border border-white/10 hover:border-[#00FFFF] hover:text-[#00FFFF] hover:bg-[#00FFFF]/10 text-white/50 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group">
+        <iconify-icon icon="solar:round-alt-arrow-up-line-duotone" class="text-2xl md:text-3xl group-hover:-translate-y-1 transition-transform"></iconify-icon>
+    </button>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5548988513522?text=Olá,%20vim%20através%20do%20seu%20site%20e%20gostaria%20de%20mais%20informações." target="_blank" rel="noopener noreferrer" 
+        class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[150] group flex items-center justify-center p-4 bg-[#0A0A0A]/80 backdrop-blur-lg rounded-full shadow-[0_0_30px_rgba(0,255,255,0.25)] border border-[#00FFFF]/30 hover:border-[#00FFFF] hover:bg-[#00FFFF]/10 transition-all duration-300 transform hover:scale-110 cursor-pointer">
+        <iconify-icon icon="logos:whatsapp-icon" class="text-3xl filter drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"></iconify-icon>
+        <span class="absolute inset-0 rounded-full animate-ping bg-[#00FFFF] opacity-20 group-hover:opacity-40"></span>
+    </a>
+
+    <!-- Javascript Interactions & Logic -->
+    <script src="js/main.js" defer></script>
+
+</body>
+
+</html>
