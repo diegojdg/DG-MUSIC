@@ -1,15 +1,17 @@
-# Video Files
+# vídeos
 *.mp4
 *.mov
 *.avi
 *.mkv
+*.wmv
 *.webm
 
-# Heavy Assets / Raw Files
-**/raw_files/
-**/backup/
-**/temp/
+# pasta pesada
+artools/
+DGMUSIC/
+templates/
 
-# OS Files
-.DS_Store
-Thumbs.db
+# opcional
+node_modules/
+dist/
+.vscode/

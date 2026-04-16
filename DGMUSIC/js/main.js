@@ -209,7 +209,23 @@
                     heroTitle2: 'ONLINE',
                     heroDesc: 'A música gera emoções, o visual cria memórias.',
                     heroBtnExplore: 'Explore Portfolio',
-                    heroBtnQuote: 'Orçamento'
+                    heroBtnQuote: 'Orçamento',
+                    motionPre: 'VISUAL EXPERIENCES',
+                    motionTitle: 'MOTION <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">VIDEOS</span>',
+                    flyersPre: 'FLYERS',
+                    flyersTitle: 'EVENTOS E <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">ARTISTAS</span>',
+                    aboutPre: 'QUEM SOU EU',
+                    aboutTitle: 'Designer gráfico, Motion designer<br/>e <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/70 font-medium">Editor de Vídeo</span>',
+                    aboutP1: 'Transformo ideias em experiências visuais para música, eventos e artistas que querem se destacar.',
+                    aboutP2: 'Antes do design, eu vivi esse mercado. Fui DJ por mais de 15 anos — do open format à produção musical — entendendo na prática o universo dos eventos, a importância dos bastidores e o nível de dedicação que tudo isso exige.',
+                    aboutP3: 'O visual sempre fez parte dessa jornada. Desde cedo, eu já criava capas, flyers e vídeos como forma de expressar minha identidade além da música. Com a pandemia e o nascimento do meu filho, decidi focar totalmente no design e no audiovisual.',
+                    aboutP4: 'Hoje, uno essa vivência para dar vida a projetos únicos.',
+                    aboutTag1: 'EXPERIÊNCIA VISUAL',
+                    aboutTag2: 'IDENTIDADE DE ARTISTAS',
+                    aboutBtnCreate: 'Vamos criar algo?',
+                    statProjects: 'PROJETOS',
+                    statClients: 'CLIENTES',
+                    statYears: 'ANOS DE EXPERIÊNCIA'
                 },
                 en: {
                     logoText: 'DIEGO JAQUES <span class="text-neutral-600 font-light group-hover:text-white/50 transition-colors">// DSGN</span>',
@@ -222,7 +238,23 @@
                     heroTitle2: 'PORTFOLIO',
                     heroDesc: 'Music creates emotions, visuals create memories.',
                     heroBtnExplore: 'Explore Portfolio',
-                    heroBtnQuote: 'Quote'
+                    heroBtnQuote: 'Quote',
+                    motionPre: 'VISUAL EXPERIENCES',
+                    motionTitle: 'MOTION <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">VIDEOS</span>',
+                    flyersPre: 'FLYERS',
+                    flyersTitle: 'EVENTS & <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">ARTISTS</span>',
+                    aboutPre: 'ABOUT ME',
+                    aboutTitle: 'Graphic designer, Motion designer<br/>& <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/70 font-medium">Video Editor</span>',
+                    aboutP1: 'I transform ideas into visual experiences for music, events, and artists who want to stand out.',
+                    aboutP2: 'Before design, I lived in this market. I was a DJ for over 15 years — from open format to music production — understanding in practice the event universe, the importance of backstage, and the level of dedication it requires.',
+                    aboutP3: 'Visuals have always been part of this journey. Early on, I was already creating covers, flyers, and videos to express my identity beyond music. During the pandemic and with the birth of my son, I decided to fully focus on design and audiovisuals.',
+                    aboutP4: 'Today, I combine this experience to bring unique projects to life.',
+                    aboutTag1: 'VISUAL EXPERIENCE',
+                    aboutTag2: 'ARTIST IDENTITY',
+                    aboutBtnCreate: 'Let\'s create something?',
+                    statProjects: 'PROJECTS',
+                    statClients: 'CLIENTS',
+                    statYears: 'YEARS OF EXPERIENCE'
                 },
                 es: {
                     logoText: 'DIEGO JAQUES <span class="text-neutral-600 font-light group-hover:text-white/50 transition-colors">// DSGN</span>',
@@ -235,22 +267,38 @@
                     heroTitle2: 'EN LÍNEA',
                     heroDesc: 'La música genera emociones, lo visual crea recuerdos.',
                     heroBtnExplore: 'Explorar Portafolio',
-                    heroBtnQuote: 'Presupuesto'
+                    heroBtnQuote: 'Presupuesto',
+                    motionPre: 'EXPERIENCIAS VISUALES',
+                    motionTitle: 'VIDEOS <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">MOTION</span>',
+                    flyersPre: 'FLYERS',
+                    flyersTitle: 'EVENTOS Y <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">ARTISTAS</span>',
+                    aboutPre: 'SOBRE MÍ',
+                    aboutTitle: 'Diseñador gráfico, Motion designer<br/>y <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/70 font-medium">Editor de Video</span>',
+                    aboutP1: 'Transformo ideas en experiencias visuales para música, eventos y artistas que quieren destacar.',
+                    aboutP2: 'Antes del diseño, viví este mercado. Fui DJ durante más de 15 años — desde open format hasta producción musical — entendiendo en la práctica el universo de los eventos, la importancia del backstage y el nivel de dedicación que todo esto exige.',
+                    aboutP3: 'Lo visual siempre formó parte de este viaje. Desde temprano ya creaba portadas, flyers y videos como forma de expresar mi identidad más allá de la música. Con la pandemia y el nacimiento de mi hijo, decidí enfocarme totalmente en el diseño y lo audiovisual.',
+                    aboutP4: 'Hoy, combino esta vivencia para dar vida a proyectos únicos.',
+                    aboutTag1: 'EXPERIENCIA VISUAL',
+                    aboutTag2: 'IDENTIDAD DE ARTISTA',
+                    aboutBtnCreate: '¿Vamos a crear algo?',
+                    statProjects: 'PROYECTOS',
+                    statClients: 'CLIENTES',
+                    statYears: 'AÑOS DE EXPERIENCIA'
                 }
             };
 
             const langButtons = document.querySelectorAll('[data-lang-btn]');
             langButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    const selectedLang = e.target.getAttribute('data-lang-btn');
+                    const selectedLang = e.currentTarget.getAttribute('data-lang-btn');
                     
                     // Update visual state of buttons
                     langButtons.forEach(b => {
                         b.classList.remove('text-[#00FFFF]');
                         b.classList.add('text-white/50');
                     });
-                    e.target.classList.add('text-[#00FFFF]');
-                    e.target.classList.remove('text-white/50');
+                    e.currentTarget.classList.add('text-[#00FFFF]');
+                    e.currentTarget.classList.remove('text-white/50');
 
                     // Translate elements
                     document.querySelectorAll('[data-i18n]').forEach(el => {

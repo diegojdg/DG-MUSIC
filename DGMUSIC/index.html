@@ -85,9 +85,9 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                     DSGN</span></span>
         </div>
         <div class="flex gap-4 md:gap-8 justify-center items-center font-semibold text-[9px] md:text-xs tracking-widest text-neutral-500 flex-wrap text-center">
+            <a href="#hero" class="hover:text-[#00FFFF] transition-colors cursor-pointer block" data-i18n="navCover">Cover Art</a>
             <a href="#event-flyers" class="hover:text-[#00FFFF] text-white transition-colors cursor-pointer block" data-i18n="navFlyers">Flyers</a>
             <a href="#motion-gallery" class="hover:text-[#00FFFF] transition-colors cursor-pointer block" data-i18n="navVisual">Visual Experience</a>
-            <a href="#" class="hover:text-[#00FFFF] transition-colors cursor-pointer block" data-i18n="navCover">Cover Art</a>
             <a href="#about-me" class="hover:text-[#00FFFF] transition-colors cursor-pointer block" data-i18n="navAbout">Quem Sou eu</a>
         </div>
     </nav>
@@ -121,7 +121,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
 
                 <div class="flex flex-col sm:flex-row items-start gap-4 gsap-in" data-gsap="fadeUp" data-gsap-delay="0.3">
                     <!-- Advanced Shimmer Beam Button derived from System (Explore Portfolio) -->
-                    <a href="#event-flyers" class="group relative origin-left pt-2 pb-2 block">
+                    <a href="#motion-gallery" class="group relative origin-left pt-2 pb-2 block">
                         <div class="-inset-2 group-hover:opacity-100 transition duration-500 bg-[#00FFFF]/30 opacity-0 rounded-full absolute blur-xl"></div>
                         <div class="absolute -inset-[1px] rounded-full overflow-hidden opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
                             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#00FFFF_360deg)] animate-[spin_2s_linear_infinite]"></div>
@@ -179,7 +179,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div class="parallax-layer-2 absolute top-[45%] lg:top-[28%] right-[5%] lg:right-[2%] w-[55%] lg:w-[45%] aspect-square bg-neutral-900 border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.95)] floating-card z-[10] transform rotate-[4deg] glow-on-hover gsap-in"
                     data-gsap="scaleUp" data-gsap-delay="0.5">
                     <div class="relative w-full h-full overflow-hidden">
-                        <img src="https://vumbnail.com/1181165010.jpg" 
+                        <img src="assets/images/Cover-art---The-Begin---GABBEH,-MELLO--JPG-[1080x1080_72dpi].jpg" 
                             class="image-cover absolute inset-0 w-full h-full object-cover opacity-90 transition-all duration-700 saturate-[0.8]" 
                             alt="The Begin" />
                         <iframe 
@@ -196,7 +196,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div class="parallax-layer-3 absolute top-[80%] lg:top-[65%] lg:bottom-auto right-[1%] lg:right-auto left-auto lg:left-[35%] w-[40%] lg:w-[25%] aspect-square bg-neutral-900 border border-white/10 shadow-2xl floating-card z-[2] transform -rotate-6 glow-on-hover gsap-in overflow-hidden"
                     data-gsap="scaleUp" data-gsap-delay="0.65">
                     <div class="relative w-full h-full overflow-hidden">
-                        <img src="https://vumbnail.com/1181164173.jpg" 
+                        <img src="assets/images/LOVE%20JPG%20canva.jpg" 
                             class="image-cover absolute inset-0 w-full h-full object-cover opacity-90 transition-all duration-700 saturate-[0.8]" 
                             alt="Canvas" />
                         <iframe 
@@ -234,7 +234,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div class="parallax-layer-1 absolute bottom-[0%] lg:bottom-[5%] left-[5%] lg:left-[-12%] w-[35%] lg:w-48 aspect-[9/16] bg-neutral-900 border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,255,255,0.1)] floating-card z-30 transform -rotate-[5deg] glow-on-hover gsap-in hidden md:block overflow-hidden"
                     data-gsap="scaleUp" data-gsap-delay="0.8">
                     <div class="relative w-full h-full overflow-hidden">
-                        <img src="https://vumbnail.com/1181164587.jpg" 
+                        <img src="https://i.vimeocdn.com/video/2143455768-844e0e0474ecc3609b8cd2a7e8b6feae6e604a4d0997ebea2f120a4701cd0e7f-d_640?region=us" 
                             class="image-cover absolute inset-0 w-full h-full object-cover opacity-90 transition-all duration-700 saturate-[0.8]" 
                             alt="Ludicy" />
                         <iframe 
@@ -250,15 +250,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
 
         </main>
         
-        <!-- Language Translator Widget Float (Positioned relative to bottom of hero) -->
-        <div class="absolute bottom-6 md:bottom-12 right-6 md:right-12 z-50 flex gap-2 items-center bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)] gsap-in" data-gsap="fadeUp" data-gsap-delay="0.9">
-            <span class="text-[10px] text-neutral-500 font-mono tracking-widest mr-2 uppercase">Lang</span>
-            <button data-lang-btn="pt" class="text-xs font-semibold text-[#00FFFF] hover:text-[#00FFFF] transition-colors cursor-pointer px-1">PT</button>
-            <span class="text-white/20 text-xs">/</span>
-            <button data-lang-btn="en" class="text-xs font-semibold text-white/50 hover:text-[#00FFFF] transition-colors cursor-pointer px-1">EN</button>
-            <span class="text-white/20 text-xs">/</span>
-            <button data-lang-btn="es" class="text-xs font-semibold text-white/50 hover:text-[#00FFFF] transition-colors cursor-pointer px-1">ES</button>
-        </div>
+        
         
     </section>
 
@@ -282,9 +274,9 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
 
             <div class="text-center mb-16 max-w-2xl gsap-in px-6 lg:px-0" data-gsap="fadeUp">
                 <p class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-3 flex items-center justify-center gap-3">
-                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> VISUAL EXPERIENCES <span class="w-8 h-[1px] bg-[#00FFFF]"></span>
+                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> <span data-i18n="motionPre">VISUAL EXPERIENCES</span> <span class="w-8 h-[1px] bg-[#00FFFF]"></span>
                 </p>
-                <h2 class="font-orbitron lg:text-5xl text-4xl font-medium text-white tracking-tighter mb-4 drop-shadow-[0_0_30px_rgba(0,255,255,0.15)]">
+                <h2 class="font-orbitron lg:text-5xl text-4xl font-medium text-white tracking-tighter mb-4 drop-shadow-[0_0_30px_rgba(0,255,255,0.15)]" data-i18n="motionTitle">
                     MOTION <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">VIDEOS</span>
                 </h2>
             </div>
@@ -297,7 +289,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180788887.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142985880-11ccd4810c0c8be302636e5beb0654f8fee7f6204d5bcd873798ca7f43badb21-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Agenda Mochakk - Out Nov 2023" />
                         <iframe
@@ -323,7 +315,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180790528.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142986488-77688457f21b8e07bc309b943b01d069c065ea90322e578485a87767229e8ea2-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Capa animada" />
                         <iframe
@@ -349,7 +341,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180790879.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142987815-1e9535c2e4ec718e98031684493cbc3f0ce2b6a32335e5832237ea5b1709de9b-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Motion - Agenda Kolombo" />
                         <iframe
@@ -378,7 +370,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180791309.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142988123-61115c2ac566d2e05dddb9c4764c243a98111100dc1b2303cc0b16d63ed8f62e-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Motion - Flyer Illuzionize" />
                         <iframe
@@ -404,7 +396,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180792245.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142989286-b2e2ec299dee5423bf08a696589b4f016a3bf6f08394df445ea63b142298bf8c-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Motion - Flyer Vegas" />
                         <iframe
@@ -432,7 +424,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180792444.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142989713-b0d21558b3e42f29be6855f52191605e4483beac097c9c49d0090943a34e4d64-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Motion - Mc Cabelinho 2" />
                         <iframe
@@ -461,7 +453,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180792478.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142988972-80807e5bf79520b2544ae93b1a775304a520c02da443a01dc9626f6c5d02da34-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Motion - Minimal Return" />
                         <iframe
@@ -487,7 +479,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180792641.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142989159-9d3ce634761762a28d290cef328a4717d1287965b8f189e77dbaf1fedfcb3cf5-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Victor Lou Egito" />
                         <iframe
@@ -516,7 +508,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1006742054.jpg"
+                        <img src="https://i.vimeocdn.com/video/1923500995-1806580b240a4fa9fb22c7125e0e532cbc28ceaf66d9b93b485848e7b5b51157-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Reels - Israel Vibes - 21-02" />
                         <iframe
@@ -545,7 +537,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180792404.jpg"
+                        <img src="https://i.vimeocdn.com/video/2143453884-0b13a8ea22aee45075176622974e0e41c008a10d63aa269fdb27f89fcbc3e93a-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Djonga Floripa" />
                         <iframe
@@ -571,7 +563,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1006747710.jpg"
+                        <img src="https://i.vimeocdn.com/video/1923507744-85734a85e54d50420f19d12eee6ea79a0de2331915e3d2821bb33c7e246d6ac9-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Video Private - Festival On Board" />
                         <iframe
@@ -599,7 +591,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1181164173.jpg"
+                        <img src="https://i.vimeocdn.com/video/2143454320-5e45d60daf0d052c7da061b5736d7287e60f973a61a48b8dd728741c7e2920cf-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Canvas" />
                         <iframe
@@ -625,7 +617,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1181164587.jpg"
+                        <img src="https://i.vimeocdn.com/video/2143455768-844e0e0474ecc3609b8cd2a7e8b6feae6e604a4d0997ebea2f120a4701cd0e7f-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Ludicy" />
                         <iframe
@@ -654,7 +646,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1181165010.jpg"
+                        <img src="https://i.vimeocdn.com/video/2143673260-9688b776b88090684e276b40db5b50049e83f412051afbf6c04340b3025d045d-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="The Begin" />
                         <iframe
@@ -683,7 +675,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180792508.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142990488-074cb5ecf3383f1a69d02be83a40fb230b3de891c160839751ffe7d03bb1c081-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Chihiro - Gabbeh, Daudt" />
                         <iframe
@@ -711,7 +703,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180792546.jpg"
+                        <img src="https://i.vimeocdn.com/video/2142991135-ad6ad4495648b0c27254f2de0235f4674f1166b9c4532a3914311d1464fc8970-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="So You Know - GABBEH" />
                         <iframe
@@ -740,7 +732,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180792581.jpg"
+                        <img src="https://i.vimeocdn.com/video/2144406121-39c9ecb9063a4e62bf2b0ab3474b485d66748e216bf3d1ab2e551a285d74509c-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Tão Gostosa - Di Jones" />
                         <iframe
@@ -769,7 +761,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 <div
                     class="relative w-full mb-6 break-inside-avoid rounded-sm overflow-hidden border border-white/10 shadow-lg floating-card bg-[#0A0A0A] group">
                     <div class="relative w-full" style="padding-top:56.25%">
-                        <img src="https://vumbnail.com/1180792357.jpg"
+                        <img src="https://i.vimeocdn.com/video/2144407014-4f507e3485076c280e24df796a9a76c22f6287ff6f020626752731eede84cb4e-d_640?region=us"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                             loading="lazy" alt="Barbie RMX" />
                         <iframe
@@ -819,10 +811,10 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
             <div class="text-center mb-16 max-w-2xl gsap-in" data-gsap="fadeUp">
                 <p
                     class="font-orbitron text-xs uppercase tracking-[0.4em] text-[#00FFFF] mb-3 flex items-center justify-center gap-3">
-                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> FLYERS <span class="w-8 h-[1px] bg-[#00FFFF]"></span>
+                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> <span data-i18n="flyersPre">FLYERS</span> <span class="w-8 h-[1px] bg-[#00FFFF]"></span>
                 </p>
                 <h2
-                    class="font-orbitron lg:text-5xl text-4xl font-medium text-white tracking-tighter mb-4 drop-shadow-[0_0_30px_rgba(0,255,255,0.15)]">
+                    class="font-orbitron lg:text-5xl text-4xl font-medium text-white tracking-tighter mb-4 drop-shadow-[0_0_30px_rgba(0,255,255,0.15)]" data-i18n="flyersTitle">
                     EVENTOS E <span
                         class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/50">ARTISTAS</span>
                 </h2>
@@ -1090,8 +1082,55 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
     </div>
 
     <!-- ABOUT ME / QUEM SOU EU SECTION (Moved to last fold) -->
-    <section id="about-me" class="py-24 lg:py-32 w-full relative z-10 overflow-hidden bg-[#050505] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+    <section id="about-me" class="pt-8 pb-24 md:pt-16 lg:py-32 w-full relative z-10 overflow-hidden bg-[#050505] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
         
+        <!-- Language Translator (Moved to TOP of Quem sou eu) -->
+        <div class="w-full flex justify-center mb-16 relative z-50">
+            <div class="flex gap-2 items-center bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)] gsap-in" data-gsap="fadeDown">
+                <span class="text-[10px] text-neutral-500 font-mono tracking-widest mr-2 uppercase">Lang</span>
+                <button data-lang-btn="pt" class="text-xs font-semibold text-[#00FFFF] hover:text-[#00FFFF] transition-colors cursor-pointer px-1">PT</button>
+                <span class="text-white/20 text-xs">/</span>
+                <button data-lang-btn="en" class="text-xs font-semibold text-white/50 hover:text-[#00FFFF] transition-colors cursor-pointer px-1">EN</button>
+                <span class="text-white/20 text-xs">/</span>
+                <button data-lang-btn="es" class="text-xs font-semibold text-white/50 hover:text-[#00FFFF] transition-colors cursor-pointer px-1">ES</button>
+            </div>
+        </div>
+
+        <!-- NEW STATS SECTION (Design System Style) -->
+        <div class="w-full max-w-6xl mx-auto px-6 mb-24 relative z-40">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 text-center py-10">
+                <!-- Stat 1 -->
+                <div class="flex flex-col items-center justify-center space-y-3 gsap-in" data-gsap="fadeUp" data-gsap-delay="0.1">
+                    <h3 class="text-white text-5xl lg:text-6xl font-medium tracking-tight">100+</h3>
+                    <p class="text-neutral-500 text-[10px] lg:text-xs tracking-[0.25em] uppercase font-mono" data-i18n="statProjects">PROJETOS</p>
+                </div>
+                <!-- Stat 2 -->
+                <div class="flex flex-col items-center justify-center space-y-3 gsap-in relative group" data-gsap="fadeUp" data-gsap-delay="0.2">
+                    <h3 class="text-white text-5xl lg:text-6xl font-medium tracking-tight flex items-center justify-center relative z-10">
+                        50+
+                    </h3>
+                    <p class="text-neutral-500 text-[10px] lg:text-xs tracking-[0.25em] uppercase font-mono" data-i18n="statClients">CLIENTES</p>
+                    
+                    <!-- Creative Flags Array Centralized & Hover Reveal -->
+                    <div class="flex items-center justify-center -space-x-2 mt-4 opacity-70 group-hover:opacity-100 group-hover:-space-x-1 transition-all duration-500 pt-2 pb-2">
+                        <img src="https://flagcdn.com/w40/br.png" class="w-6 h-6 rounded-full border border-white/20 object-cover hover:z-20 hover:scale-125 transition-transform shadow-[0_0_10px_rgba(0,0,0,0.5)]" title="Brasil" alt="Brasil">
+                        <img src="https://flagcdn.com/w40/es.png" class="w-6 h-6 rounded-full border border-white/20 object-cover hover:z-20 hover:scale-125 transition-transform shadow-[0_0_10px_rgba(0,0,0,0.5)]" title="Espanha" alt="Espanha">
+                        <img src="https://flagcdn.com/w40/co.png" class="w-6 h-6 rounded-full border border-white/20 object-cover hover:z-20 hover:scale-125 transition-transform shadow-[0_0_10px_rgba(0,0,0,0.5)]" title="Colômbia" alt="Colômbia">
+                        <img src="https://flagcdn.com/w40/pt.png" class="w-6 h-6 rounded-full border border-white/20 object-cover hover:z-20 hover:scale-125 transition-transform shadow-[0_0_10px_rgba(0,0,0,0.5)]" title="Portugal" alt="Portugal">
+                        <img src="https://flagcdn.com/w40/us.png" class="w-6 h-6 rounded-full border border-white/20 object-cover hover:z-20 hover:scale-125 transition-transform shadow-[0_0_10px_rgba(0,0,0,0.5)]" title="EUA" alt="EUA">
+                    </div>
+                </div>
+                <!-- Stat 3 -->
+                <div class="flex flex-col items-center justify-center space-y-3 gsap-in" data-gsap="fadeUp" data-gsap-delay="0.3">
+                    <h3 class="text-white text-5xl lg:text-6xl font-medium tracking-tight">5+</h3>
+                    <p class="text-neutral-500 text-[10px] lg:text-xs tracking-[0.25em] uppercase font-mono" data-i18n="statYears">ANOS DE EXPERIÊNCIA</p>
+                </div>
+            </div>
+            
+            <!-- Subtle Separator -->
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mt-4 opacity-50"></div>
+        </div>
+
         <!-- Ambient Background / Grid -->
         <div class="absolute inset-0 grid-bg opacity-20 z-0 pointer-events-none"></div>
         <div class="absolute top-1/2 right-[10%] -translate-y-1/2 w-[70vw] h-[70vh] bg-gradient-to-tl from-[#00FFFF] to-transparent rounded-[100%] opacity-[0.03] pointer-events-none filter blur-[120px] mix-blend-screen aurora-mask z-0"></div>
@@ -1099,7 +1138,7 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
         <div class="w-full lg:w-[85%] max-w-[100rem] mx-auto px-6 lg:px-0 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             <!-- Left Column: Visual Assets with hover Z-index swap -->
-            <div class="lg:col-span-5 relative w-full aspect-[4/5] perspective-[1000px] flex items-center justify-center mt-10 lg:mt-0 gsap-in group" data-gsap="fadeLeft">
+            <div class="lg:col-span-5 relative w-full aspect-[4/5] perspective-[1000px] flex items-center justify-center mt-[-10%] md:mt-0 lg:mt-0 gsap-in group" data-gsap="fadeLeft">
                 
                 <!-- Main Portrait (Normally in front) -->
                 <div class="w-[65%] lg:w-[70%] aspect-[4/5] bg-[#0A0A0A] border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.9)] floating-card z-20 group-hover:z-10 transition-all duration-500 transform -rotate-[3deg] overflow-hidden">
@@ -1109,14 +1148,10 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
 
                 <!-- Floating Video Component (Normally behind, comes to front on hover) -->
                 <div class="absolute bottom-[10%] lg:bottom-[15%] right-[5%] lg:right-[0%] w-[30%] lg:w-[32%] aspect-[9/16] bg-[#0A0A0A] border border-[#00FFFF]/20 shadow-[0_30px_60px_-15px_rgba(0,255,255,0.4)] floating-card z-10 group-hover:z-30 transition-all duration-500 transform rotate-[4deg] group-hover:rotate-0 group-hover:scale-105 overflow-hidden hidden md:block">
-                    <div class="relative w-full h-full">
-                        <img src="https://vumbnail.com/1180792404.jpg" 
-                            class="image-cover absolute inset-0 w-full h-full object-cover opacity-90 transition-all duration-700 saturate-[0.8]" 
-                            alt="About Me Video" />
-                        <iframe 
-                            data-src="https://player.vimeo.com/video/1180792404?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0" 
-                            class="lazy-iframe absolute inset-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" 
-                            frameborder="0" allow="autoplay; fullscreen"></iframe>
+                    <div class="relative w-full h-full bg-black">
+                        <video class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 saturate-[0.8] group-hover:saturate-100" autoplay loop muted playsinline>
+                            <source src="assets/videos/EDIT%20VIDEO%20DJ.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
 
@@ -1130,36 +1165,56 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
             <!-- Right Column: Context & Bio -->
             <div class="lg:col-span-7 flex flex-col justify-center z-30 lg:pl-10">
                 <p class="font-orbitron text-xs uppercase tracking-[0.3em] text-[#00FFFF] mb-6 flex items-center gap-3 gsap-in" data-gsap="fadeUp">
-                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> QUEM SOU EU
+                    <span class="w-8 h-[1px] bg-[#00FFFF]"></span> <span data-i18n="aboutPre">QUEM SOU EU</span>
                 </p>
 
-                <h2 class="font-orbitron lg:text-3xl text-2xl font-light tracking-[0.1em] text-white/90 mb-8 drop-shadow-[0_0_20px_rgba(0,255,255,0.15)] gsap-in uppercase border-b border-[#00FFFF]/20 pb-4 inline-block" data-gsap="fadeUp" data-gsap-delay="0.1">
+                <h2 class="font-orbitron lg:text-3xl text-2xl font-light tracking-[0.1em] text-white/90 mb-8 drop-shadow-[0_0_20px_rgba(0,255,255,0.15)] gsap-in uppercase border-b border-[#00FFFF]/20 pb-4 inline-block" data-gsap="fadeUp" data-gsap-delay="0.1" data-i18n="aboutTitle">
                     Designer gráfico, Motion designer<br/>
                     e <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-white/70 font-medium">Editor de Vídeo</span>
                 </h2>
 
                 <div class="space-y-6 text-neutral-400 font-light text-[1rem] leading-relaxed mb-10 border-l-2 border-[#00FFFF]/30 pl-6 backdrop-blur-sm bg-white/5 py-4 gsap-in" data-gsap="fadeUp" data-gsap-delay="0.2">
-                    <p>
+                    <p data-i18n="aboutP1">
                         Transformo ideias em experiências visuais para música, eventos e artistas que querem se destacar.
                     </p>
-                    <p>
+                    <p data-i18n="aboutP2">
                         Antes do design, eu vivi esse mercado. Fui DJ por mais de 15 anos — do open format à produção musical — entendendo na prática o universo dos eventos, a importância dos bastidores e o nível de dedicação que tudo isso exige.
                     </p>
-                    <p>
+                    <p data-i18n="aboutP3">
                         O visual sempre fez parte dessa jornada. Desde cedo, eu já criava capas, flyers e vídeos como forma de expressar minha identidade além da música. Com a pandemia e o nascimento do meu filho, decidi focar totalmente no design e no audiovisual.
                     </p>
-                    <p class="text-white/80 font-medium">
+                    <p class="text-white/80 font-medium" data-i18n="aboutP4">
                         Hoje, uno essa vivência para dar vida a projetos únicos.
                     </p>
                 </div>
 
                 <div class="flex flex-wrap gap-4 gsap-in" data-gsap="fadeUp" data-gsap-delay="0.3">
                     <div class="px-5 py-3 border border-white/10 rounded-sm bg-[#050505]/50 text-[10px] font-mono tracking-widest uppercase text-white shadow-lg hover:border-[#00FFFF]/50 transition-colors inline-block">
-                        <span class="text-[#00FFFF] mr-2">✦</span> EXPERIÊNCIA VISUAL
+                        <span class="text-[#00FFFF] mr-2">✦</span> <span data-i18n="aboutTag1">EXPERIÊNCIA VISUAL</span>
                     </div>
                     <div class="px-5 py-3 border border-white/10 rounded-sm bg-[#050505]/50 text-[10px] font-mono tracking-widest uppercase text-white shadow-lg hover:border-[#00FFFF]/50 transition-colors inline-block">
-                        <span class="text-[#00FFFF] mr-2">✦</span> IDENTIDADE DE ARTISTAS
+                        <span class="text-[#00FFFF] mr-2">✦</span> <span data-i18n="aboutTag2">IDENTIDADE DE ARTISTAS</span>
                     </div>
+                </div>
+
+                <div class="mt-10 gsap-in" data-gsap="fadeUp" data-gsap-delay="0.4">
+                    <a href="https://wa.me/5548988513522?text=Olá,%20vim%20através%20do%20seu%20site%20e%20gostaria%20de%20criar%20algo." target="_blank" rel="noopener noreferrer" class="group relative origin-left pt-2 pb-2 block inline-block">
+                        <div class="-inset-2 group-hover:opacity-100 transition duration-500 bg-[#00FFFF]/30 opacity-0 rounded-full absolute blur-xl"></div>
+                        <div class="absolute -inset-[1px] rounded-full overflow-hidden opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#00FFFF_360deg)] animate-[spin_2s_linear_infinite]"></div>
+                        </div>
+                        <button class="group relative z-10 flex items-center justify-center overflow-hidden rounded-full p-[1px] leading-none cursor-pointer">
+                            <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#00FFFF_360deg)] block"></span>
+                            <span class="relative flex h-full w-full items-center rounded-full bg-[#050505] pt-4 pr-10 pb-4 pl-10 ring-1 ring-white/10 group-hover:ring-transparent transition-all">
+                                <span class="absolute inset-0 overflow-hidden rounded-full block">
+                                    <span class="absolute top-0 left-0 h-full w-full -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:animate-[shimmer_1.5s_infinite] group-hover:opacity-100 block"></span>
+                                </span>
+                                <span class="relative z-10 flex items-center">
+                                    <span class="text-sm font-bold tracking-widest uppercase text-white font-orbitron" data-i18n="aboutBtnCreate">Vamos criar algo?</span>
+                                </span>
+                            </span>
+                        </button>
+                    </a>
                 </div>
             </div>
 
@@ -1185,12 +1240,18 @@ No Three.js needed - this runs seamlessly with GPU acceleration and blends natur
                 </div>
             </div>
 
-            <div class="flex items-center gap-6">
-                <a href="#" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:border-[#00FFFF]/50 hover:bg-[#00FFFF]/10 transition-all duration-300">
+            <div class="flex flex-wrap justify-center items-center gap-4">
+                <a href="https://www.behance.net/diegojaquesdg" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:border-[#00FFFF]/50 hover:bg-[#00FFFF]/10 transition-all duration-300">
                     <iconify-icon icon="ri:behance-fill" class="text-xl text-neutral-400 group-hover:text-[#00FFFF] transition-colors duration-300"></iconify-icon>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:border-[#00FFFF]/50 hover:bg-[#00FFFF]/10 transition-all duration-300">
+                <a href="https://www.instagram.com/diegoj.design/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:border-[#00FFFF]/50 hover:bg-[#00FFFF]/10 transition-all duration-300">
                     <iconify-icon icon="ri:instagram-line" class="text-xl text-neutral-400 group-hover:text-[#00FFFF] transition-colors duration-300"></iconify-icon>
+                </a>
+                <a href="mailto:diegojaquesdg@gmail.com" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:border-[#00FFFF]/50 hover:bg-[#00FFFF]/10 transition-all duration-300">
+                    <iconify-icon icon="ri:mail-line" class="text-xl text-neutral-400 group-hover:text-[#00FFFF] transition-colors duration-300"></iconify-icon>
+                </a>
+                <a href="https://wa.me/5548988513522?text=Olá,%20vim%20através%20do%20seu%20site%20e%20gostaria%20de%20mais%20informações." target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:border-[#00FFFF]/50 hover:bg-[#00FFFF]/10 transition-all duration-300">
+                    <iconify-icon icon="ri:whatsapp-line" class="text-xl text-neutral-400 group-hover:text-[#00FFFF] transition-colors duration-300"></iconify-icon>
                 </a>
             </div>
             
